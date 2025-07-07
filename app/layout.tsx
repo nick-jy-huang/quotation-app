@@ -15,19 +15,20 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Quotation Form",
   description: "Make quotations easily.",
-  icons: {
-    icon: "/favicon.png",
-  },
   openGraph: {
     title: "Quotation Form",
     description: "Make quotations easily.",
+    url: "https://quotation-app-zeta.vercel.app/",
     images: [
       {
-        url: "https://quotation-app-zeta.vercel.app/",
+        url: "https://quotation-app-zeta.vercel.app/favicon.png",
         width: 1200,
         height: 630,
       },
     ],
+  },
+  icons: {
+    icon: "https://quotation-app-zeta.vercel.app/favicon.png",
   },
 };
 
