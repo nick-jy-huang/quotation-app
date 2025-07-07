@@ -4,7 +4,7 @@ import { useState } from "react";
 import QuotationForm from "@/components/QuotationForm";
 import QuotationPreview from "@/components/QuotationPreview";
 import Button from "@/components/prototype/Button";
-import { useEffect } from "react";
+import runAxeCheck from "@/utils/axe";
 
 type EDIT_TYPES = "edit" | "preview";
 
@@ -16,11 +16,12 @@ export default function Home() {
     preview: <QuotationPreview />,
   };
 
-  useEffect(() => {
+  const handleTabChange = (tab: EDIT_TYPES) => {
     if (process.env.NODE_ENV === "development") {
-      import("@/utils/axe");
+      runAxeCheck();
     }
-  }, []);
+    setActiveTab(tab);
+  };
 
   return (
     <div className="flex h-screen flex-col">
@@ -36,7 +37,7 @@ export default function Home() {
 
             <div className="hidden space-x-4 sm:flex">
               <Button
-                onClick={() => setActiveTab("edit")}
+                onClick={() => handleTabChange("edit")}
                 variant={activeTab === "edit" ? "primary" : "secondary"}
                 className="gap-2"
               >
@@ -44,7 +45,7 @@ export default function Home() {
                 編輯報價單
               </Button>
               <Button
-                onClick={() => setActiveTab("preview")}
+                onClick={() => handleTabChange("preview")}
                 variant={activeTab === "preview" ? "primary" : "secondary"}
                 className="gap-2"
               >

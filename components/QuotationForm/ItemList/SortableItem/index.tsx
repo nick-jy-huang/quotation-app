@@ -35,6 +35,8 @@ export default function SortableItem({
       ref={setNodeRef}
       style={style}
       {...attributes}
+      role={undefined}
+      tabIndex={undefined}
       className="border-t border-gray-200 px-4 py-2"
     >
       <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-5">
