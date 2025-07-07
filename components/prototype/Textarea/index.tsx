@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useId } from "react";
 import { TextareaProps } from "./types";
 import { useDebouncedInputValue } from "@/hooks/useDebouncedInputValue";
 
@@ -21,10 +21,14 @@ const Textarea = forwardRef<
       className = "",
       rows = 4,
       value,
+      id,
       ...props
     },
     ref,
   ) => {
+    const autoId = useId();
+    const textareaId = id || autoId;
+
     const getValue = (val: any): string => {
       if (Array.isArray(val)) return val[0] ?? "";
       if (typeof val === "string") return val;
@@ -48,9 +52,10 @@ const Textarea = forwardRef<
 
     return (
       <div className={containerClassName}>
-        {label && <label className={labelClassName}>{label}</label>}
+        {label && <label htmlFor={textareaId} className={labelClassName}>{label}</label>}
         <textarea
           ref={ref}
+          id={textareaId}
           rows={rows}
           onChange={handleChange}
           value={localValue}

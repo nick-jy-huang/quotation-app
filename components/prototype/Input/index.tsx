@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useId } from "react";
 import { InputProps } from "./types";
 import { useDebouncedInputValue } from "@/hooks/useDebouncedInputValue";
 
@@ -25,10 +25,14 @@ const Input = forwardRef<HTMLInputElement, InputProps & { debounce?: number }>(
       type = "text",
       size = "md",
       value,
+      id,
       ...props
     },
     ref,
   ) => {
+    const autoId = useId();
+    const inputId = id || autoId;
+
     const getValue = (val: any): string | number => {
       if (Array.isArray(val)) return val[0] ?? "";
       if (typeof val === "string" || typeof val === "number") return val;
@@ -52,9 +56,10 @@ const Input = forwardRef<HTMLInputElement, InputProps & { debounce?: number }>(
 
     return (
       <div className={containerClassName}>
-        {label && <label className={labelClassName}>{label}</label>}
+        {label && <label htmlFor={inputId} className={labelClassName}>{label}</label>}
         <input
           ref={ref}
+          id={inputId}
           type={type}
           onChange={handleChange}
           value={localValue}
