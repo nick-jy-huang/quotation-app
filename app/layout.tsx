@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: "https://quotation-app-zeta.vercel.app/",
     images: [
       {
-        url: "https://quotation-app-zeta.vercel.app/favicon.png",
+        url: "https://quotation-app-zeta.vercel.app/image.jpg",
         width: 1200,
         height: 630,
       },
