@@ -1,6 +1,6 @@
-import Button from '@/components/prototype/Button';
+import Button from "@/components/prototype/Button";
 
-import { ItemHeaderProps } from './types';
+import { ItemHeaderProps } from "./types";
 
 export default function ItemHeader({ onAddItem }: ItemHeaderProps) {
   return (

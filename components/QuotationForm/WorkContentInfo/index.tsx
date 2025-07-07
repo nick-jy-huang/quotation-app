@@ -1,5 +1,5 @@
-import Textarea from '@/components/prototype/Textarea';
-import { WorkContentInfoProps } from './types';
+import Textarea from "@/components/prototype/Textarea";
+import { WorkContentInfoProps } from "./types";
 
 export default function WorkContentInfo({
   mainWorkContent,
@@ -16,7 +16,12 @@ export default function WorkContentInfo({
         onChange={onMainWorkContentChange}
         placeholder="請輸入主要工作內容..."
       />
-      <Textarea label="技術要求" value={techStack} onChange={onTechStackChange} placeholder="請輸入技術要求..." />
+      <Textarea
+        label="技術要求"
+        value={techStack}
+        onChange={onTechStackChange}
+        placeholder="請輸入技術要求..."
+      />
     </div>
   );
 }

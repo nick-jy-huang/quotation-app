@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { QuotationItem } from '@/types/quotation';
-import { useMemo } from 'react';
-import { toThousand } from '@/utils/toThousand';
+import { QuotationItem } from "@/types/quotation";
+import { useMemo } from "react";
+import { toThousand } from "@/utils/toThousand";
 
 interface TotalSectionProps {
   items: QuotationItem[];
@@ -10,7 +10,7 @@ interface TotalSectionProps {
 
 export default function TotalSection({ items }: TotalSectionProps) {
   const { subtotal, total } = useMemo(() => {
-    const updatedItems = items.map(item => ({
+    const updatedItems = items.map((item) => ({
       ...item,
       total: item.hours * item.hourlyRate,
     }));
