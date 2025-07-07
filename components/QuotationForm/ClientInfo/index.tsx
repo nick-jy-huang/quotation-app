@@ -1,0 +1,30 @@
+import { ClientInfoProps } from './types';
+import Input from '@/components/prototype/Input';
+
+export default function ClientInfo({ quotation, updateQuotation }: ClientInfoProps) {
+  return (
+    <div>
+      <h3 className="mb-2 text-lg font-semibold text-gray-700">客戶資訊</h3>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <Input label="名稱" value={quotation.customerName} onChange={value => updateQuotation('customerName', value)} />
+        <Input
+          label="電話"
+          type="tel"
+          value={quotation.customerPhone}
+          onChange={value => updateQuotation('customerPhone', value)}
+        />
+        <Input
+          label="信箱"
+          type="email"
+          value={quotation.customerEmail}
+          onChange={value => updateQuotation('customerEmail', value)}
+        />
+        <Input
+          label="地址"
+          value={quotation.customerAddress}
+          onChange={value => updateQuotation('customerAddress', value)}
+        />
+      </div>
+    </div>
+  );
+}
