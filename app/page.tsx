@@ -67,11 +67,11 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           {renderConponent[activeTab]}
         </div>
-      </main>
+      </div>
 
       <footer className="sticky bottom-0 z-10 w-full space-x-2 bg-white py-4 text-center text-xs text-gray-700">
         <span>
