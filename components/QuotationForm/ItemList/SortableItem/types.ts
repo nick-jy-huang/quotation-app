@@ -1,4 +1,4 @@
-import type { QuotationItem } from '@/types/quotation';
+import type { QuotationItem } from "@/types/quotation";
 
 export interface SortableItemProps {
   item: QuotationItem & { total: number };
