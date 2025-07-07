@@ -54,7 +54,7 @@ export default function Home() {
             </div>
             <div className="flex sm:hidden">
               <select
-                className="block w-32 rounded-md border border-gray-300 bg-white py-2 pr-0 pl-2 text-sm text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="block w-32 rounded-md border border-gray-300 bg-white py-2 pr-0 pl-2 text-sm text-gray-900 focus:border-blue-700 focus:ring-2 focus:ring-blue-700 focus:outline-none"
                 value={activeTab}
                 onChange={(e) => setActiveTab(e.target.value as EDIT_TYPES)}
                 aria-label="切換頁籤"
@@ -73,17 +73,17 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="sticky bottom-0 z-10 w-full space-x-2 bg-white py-4 text-center text-xs text-gray-500">
+      <footer className="sticky bottom-0 z-10 w-full space-x-2 bg-white py-4 text-center text-xs text-gray-700">
         <span>
           &copy; {new Date().getFullYear()} Quotation Form For. All rights
           reserved.
         </span>
-        <span className="mt-2 text-xs text-gray-400">
+        <span className="mt-2 text-xs text-gray-700">
           All Icons by&nbsp;
           <a
             href="https://www.flaticon.com/"
             title="Flaticon"
-            className="underline hover:text-blue-500"
+            className="underline hover:text-blue-700"
             target="_blank"
             rel="noopener noreferrer"
           >

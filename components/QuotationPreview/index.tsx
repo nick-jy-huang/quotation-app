@@ -142,7 +142,7 @@ export default function QuotationPreview() {
           </div>
         </div>
 
-        <div className="mt-4 border-t pt-6 text-center text-sm text-gray-500">
+        <div className="mt-4 border-t pt-6 text-center text-sm text-gray-700">
           <p>如有任何問題，歡迎隨時聯繫。</p>
         </div>
       </div>

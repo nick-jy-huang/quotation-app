@@ -5,7 +5,7 @@ const baseClass =
   "inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer";
 
 const variantClass: Record<ButtonVariant, string> = {
-  primary: "bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500",
+  primary: "bg-blue-700 text-white hover:bg-blue-800 focus:ring-blue-700",
   secondary: "bg-gray-200 text-gray-700 hover:bg-gray-300 focus:ring-gray-400",
   ghost:
     "bg-transparent text-gray-700 hover:bg-gray-100 border border-transparent focus:ring-gray-400",
