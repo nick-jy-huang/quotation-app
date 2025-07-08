@@ -12,12 +12,14 @@ export default function CompanyInfo({
         <Input
           label="接案人"
           value={quotation.freelancer}
+          placeholder="請輸入接案人..."
           onChange={(value) => updateQuotation("freelancer", value)}
         />
         <Input
           label="信箱"
           type="email"
           value={quotation.companyEmail}
+          placeholder="請輸入信箱..."
           onChange={(value) => updateQuotation("companyEmail", value)}
         />
       </div>

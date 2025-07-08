@@ -12,18 +12,21 @@ export default function BaseInfo({
         <Input
           label="報價單編號"
           value={quotation.id}
+          placeholder="請輸入報價單編號..."
           onChange={(value) => updateQuotation("id", value)}
         />
         <Input
           label="報價日期"
           type="date"
           value={quotation.date}
+          placeholder="請輸入報價日期..."
           onChange={(value) => updateQuotation("date", value)}
         />
         <Input
           label="有效期至"
           type="date"
           value={quotation.validUntil}
+          placeholder="請輸入有效期至..."
           onChange={(value) => updateQuotation("validUntil", value)}
         />
       </div>
