@@ -37,11 +37,12 @@ export default function SortableItem({
       <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-5">
         <div className="md:col-span-2">
           <Input
-            label={`項目 ${index + 1} `}
+            label={`項目 ${index + 1}`}
             value={item.name}
             size="sm"
             placeholder="請輸入項目..."
             onChange={(value) => updateItem(item.id, 'name', value)}
+            data-testid={`item-name-${index}`}
           />
         </div>
         <Input
@@ -67,7 +68,7 @@ export default function SortableItem({
         <div className="text-mx flex items-center justify-end pt-6 text-right font-medium text-gray-700">
           <div className="pr-4 text-xs">{toThousand(item.total)}</div>
           {itemsLength > 1 && (
-            <Button onClick={() => removeItem(item.id)} variant="ghost" size="sm">
+            <Button onClick={() => removeItem(item.id)} variant="ghost" size="sm" aria-label="刪除">
               <i className="fa-solid fa-trash text-red-500"></i>
             </Button>
           )}
