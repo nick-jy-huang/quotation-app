@@ -58,3 +58,4 @@ pnpm dev
 - 本專案採用 MIT License 授權，詳見 [LICENSE](./LICENSE)。
 - 作者：nick-jy-huang
 - 本專案部分圖示素材來自 [Flaticon](https://www.flaticon.com/)。
+- 本專案 icon 來自 [fontawesome](https://www.fontawesome.com/)。
