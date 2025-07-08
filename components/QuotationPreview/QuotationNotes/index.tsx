@@ -7,7 +7,7 @@ const notes = [
 
 export default function QuotationNotes() {
   return (
-    <div className="space-y-1 divide-gray-200 text-xs text-gray-600">
+    <div className="space-y-1 divide-gray-200 text-xs text-gray-600 pt-2">
       {notes.map((note, idx) => (
         <p key={idx}>
           {idx + 1}. {note}
