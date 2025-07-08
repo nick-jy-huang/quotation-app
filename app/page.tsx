@@ -5,6 +5,7 @@ import QuotationForm from "@/components/QuotationForm";
 import QuotationPreview from "@/components/QuotationPreview";
 import Button from "@/components/prototype/Button";
 import runAxeCheck from "@/utils/axe";
+import dayjs from "dayjs";
 
 type EDIT_TYPES = "edit" | "preview";
 
@@ -76,8 +77,7 @@ export default function Home() {
 
       <footer className="sticky bottom-0 z-10 w-full space-x-2 bg-white py-4 text-center text-xs text-gray-700">
         <span>
-          &copy; {new Date().getFullYear()} Quotation Form For. All rights
-          reserved.
+          &copy; {dayjs().year()} Quotation Form For. All rights reserved.
         </span>
         <span className="mt-2 text-xs text-gray-700">
           All Icons by&nbsp;
