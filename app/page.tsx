@@ -7,13 +7,18 @@ import Button from '@/components/prototype/Button';
 import runAxeCheck from '@/utils/axe';
 import dayjs from 'dayjs';
 import { useEffect } from 'react';
+import QuotationHistoryList from '@/components/QuotationHistoryList';
+import { useQuotationStore } from '@/stores/quotationStore';
+import { QuotationData } from '@/types/quotation';
+import { handleSaveLocaleStorage } from '@/utils/saveLocaleStorage';
 
 type EDIT_TYPES = 'edit' | 'preview';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<EDIT_TYPES>('edit');
+  const { quotationHistory, setQuotationHistory, updateQuotation } = useQuotationStore();
 
-  const renderConponent = {
+  const renderComponent = {
     edit: <QuotationForm />,
     preview: <QuotationPreview />,
   };
@@ -26,6 +31,17 @@ export default function Home() {
     if (process.env.NODE_ENV === 'development') {
       runAxeCheck();
     }
+  };
+
+  const handleClearQuotationHistory = () => {
+    setQuotationHistory([]);
+    handleSaveLocaleStorage('quotation_history', []);
+  };
+
+  const handleLoadQuotation = (history: QuotationData) => {
+    Object.entries(history).forEach(([key, value]) => {
+      updateQuotation(key as keyof QuotationData, value);
+    });
   };
 
   const handleTabChange = (tab: EDIT_TYPES) => {
@@ -82,7 +98,14 @@ export default function Home() {
 
       <div className="flex-1 overflow-y-auto">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          {renderConponent[activeTab]}
+          <div className="relative">
+            <QuotationHistoryList
+              quotationHistory={quotationHistory}
+              onClear={handleClearQuotationHistory}
+              onLoad={handleLoadQuotation}
+            />
+          </div>
+          {renderComponent[activeTab]}
         </div>
       </div>
 

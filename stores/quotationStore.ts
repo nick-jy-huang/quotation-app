@@ -1,51 +1,43 @@
-import { create } from "zustand";
-import {
-  QuotationData,
-  QuotationItem,
-  QuotationStore,
-} from "@/types/quotation";
-import { generateId } from "@/utils/generateId";
-import dayjs from "dayjs";
+import { create } from 'zustand';
+import { QuotationData, QuotationItem, QuotationStore } from '@/types/quotation';
+import { generateId } from '@/utils/generateId';
+import dayjs from 'dayjs';
+
+import { handleSaveLocaleStorage } from '@/utils/saveLocaleStorage';
+
+const newItem: QuotationItem = {
+  id: generateId(),
+  name: '',
+  hourlyRate: 100,
+  hours: 1,
+};
 
 const initialQuotation: QuotationData = {
   id: generateId(),
-  date: dayjs().format("YYYY-MM-DD"),
-  customerName: "",
-  customerEmail: "",
-  customerPhone: "",
-  customerAddress: "",
-  freelancer: "",
-  companyEmail: "",
-  techStack: "",
-  mainWorkContent: "",
-  items: [
-    {
-      id: generateId(),
-      name: "",
-      hourlyRate: 100,
-      hours: 1,
-      total: 0,
-    },
-  ],
+  date: dayjs().format('YYYY-MM-DD'),
+  customerName: '',
+  customerEmail: '',
+  customerPhone: '',
+  customerAddress: '',
+  freelancer: '',
+  companyEmail: '',
+  techStack: '',
+  mainWorkContent: '',
+  items: [newItem],
   subtotal: 0,
   taxAmount: 0,
   total: 0,
-  notes: "",
-  validUntil: dayjs().add(30, "day").format("YYYY-MM-DD"),
+  notes: '',
+  validUntil: dayjs().add(30, 'day').format('YYYY-MM-DD'),
 };
 
 export const useQuotationStore = create<QuotationStore>((set, get) => ({
   quotation: initialQuotation,
+  quotationHistory: [],
+  setQuotationHistory: (history: QuotationData[]) => set({ quotationHistory: history }),
 
   addItem: () => {
     const { quotation } = get();
-    const newItem: QuotationItem = {
-      id: generateId(),
-      name: "",
-      hourlyRate: 0,
-      hours: 1,
-      total: 0,
-    };
     set({
       quotation: {
         ...quotation,
@@ -60,12 +52,18 @@ export const useQuotationStore = create<QuotationStore>((set, get) => ({
     const updatedItems = quotation.items.map((item) =>
       item.id === id ? { ...item, [field]: value } : item,
     );
+
+    const data = {
+      ...quotation,
+      items: updatedItems,
+    };
+
     set({
-      quotation: {
-        ...quotation,
-        items: updatedItems,
-      },
+      quotation: data,
     });
+
+    handleSaveLocaleStorage('quotation_current', data);
+
     get().calculateTotals();
   },
 
@@ -75,29 +73,33 @@ export const useQuotationStore = create<QuotationStore>((set, get) => ({
     if (updatedItems.length === 0) {
       updatedItems.push({
         id: generateId(),
-        name: "",
+        name: '',
         hourlyRate: 100,
         hours: 1,
-        total: 0,
       });
     }
+
+    const data = {
+      ...quotation,
+      items: updatedItems,
+    };
+
     set({
-      quotation: {
-        ...quotation,
-        items: updatedItems,
-      },
+      quotation: data,
     });
+
+    handleSaveLocaleStorage('quotation_current', data);
+
     get().calculateTotals();
   },
 
   updateQuotation: (field: keyof QuotationData, value: any) => {
     const { quotation } = get();
+    const data = { ...quotation, [field]: value };
     set({
-      quotation: {
-        ...quotation,
-        [field]: value,
-      },
+      quotation: data,
     });
+    handleSaveLocaleStorage('quotation_current', data);
   },
 
   calculateTotals: () => {

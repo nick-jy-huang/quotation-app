@@ -1,16 +1,17 @@
-"use client";
+'use client';
 
-import { useQuotationStore } from "@/stores/quotationStore";
-import TotalSection from "@/components/TotalSection";
-import QuotationNotes from "./QuotationNotes";
-import ItemTable from "./ItemTable";
-import ClientInfo from "./ClientInfo";
-import Header from "./Header";
-import html2canvas from "html2canvas-pro";
-import { useRef } from "react";
-import jsPDF from "jspdf";
-import Button from "@/components/prototype/Button";
-import dayjs from "dayjs";
+import { useQuotationStore } from '@/stores/quotationStore';
+import TotalSection from '@/components/TotalSection';
+import QuotationNotes from './QuotationNotes';
+import ItemTable from './ItemTable';
+import ClientInfo from './ClientInfo';
+import Header from './Header';
+import html2canvas from 'html2canvas-pro';
+import { useRef } from 'react';
+import jsPDF from 'jspdf';
+import Button from '@/components/prototype/Button';
+import dayjs from 'dayjs';
+import { handleSaveExportPDFToLocal, handleGetLocaleStorage } from '@/utils/saveLocaleStorage';
 
 export default function QuotationPreview() {
   const {
@@ -29,6 +30,7 @@ export default function QuotationPreview() {
       techStack,
       notes,
     },
+    setQuotationHistory,
   } = useQuotationStore();
 
   const pdfRef = useRef<HTMLDivElement>(null);
@@ -36,32 +38,54 @@ export default function QuotationPreview() {
   const handleExportPDF = async () => {
     if (!pdfRef.current) return;
     const canvas = await html2canvas(pdfRef.current, { scale: 2 });
-    const imgData = canvas.toDataURL("image/jpeg", 0.85);
-    const pdf = new jsPDF({ unit: "px", format: "a4" });
+    const imgData = canvas.toDataURL('image/jpeg', 0.85);
+    const pdf = new jsPDF({ unit: 'px', format: 'a4' });
     const pageWidth = pdf.internal.pageSize.getWidth();
     const imgWidth = pageWidth;
     const imgHeight = (canvas.height * pageWidth) / canvas.width;
 
-    pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
+    pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
 
-    const dateStr = dayjs().format("YYYYMMDD");
-    const customer = customerName || "客戶";
+    const dateStr = dayjs().format('YYYYMMDD');
+    const customer = customerName || '客戶';
+    const fileName = `${dateStr}-${customer}-報價單.pdf`;
 
-    pdf.save(`${dateStr}-${customer}-報價單.pdf`);
+    pdf.save(fileName);
+
+    const history = {
+      freelancer,
+      companyEmail,
+      id,
+      date,
+      validUntil,
+      customerName,
+      customerPhone,
+      customerEmail,
+      customerAddress,
+      items,
+      mainWorkContent,
+      techStack,
+      notes,
+      fileName,
+      exportedAt: Date.now(),
+    };
+    handleSaveExportPDFToLocal(history);
+
+    const updatedHistory = handleGetLocaleStorage('quotation_history') || [];
+    setQuotationHistory(updatedHistory);
   };
 
   return (
     <div className="mx-auto max-w-4xl">
-      <div className="flex justify-end mb-4">
-        <Button onClick={handleExportPDF} variant="warning" className="gap-2">
-          <i className="fa-solid fa-download"></i> 匯出 PDF
-        </Button>
+      <div className="relative">
+        <div className="absolute top-0 right-[-14%]">
+          <Button onClick={handleExportPDF} variant="warning" className="gap-2">
+            <i className="fa-solid fa-download"></i> 匯出 PDF
+          </Button>
+        </div>
       </div>
 
-      <div
-        ref={pdfRef}
-        className="mx-auto max-w-4xl rounded-xl bg-white p-6 shadow-lg"
-      >
+      <div ref={pdfRef} className="mx-auto max-w-4xl rounded-xl bg-white p-6 shadow-lg">
         <Header
           freelancer={freelancer}
           companyEmail={companyEmail}
@@ -79,36 +103,26 @@ export default function QuotationPreview() {
 
         {mainWorkContent && (
           <div className="mb-4">
-            <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">
-              主要工作內容
-            </h3>
-            <p className="whitespace-pre-wrap text-gray-700">
-              {mainWorkContent}
-            </p>
+            <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">主要工作內容</h3>
+            <p className="whitespace-pre-wrap text-gray-700">{mainWorkContent}</p>
           </div>
         )}
 
         {techStack && (
           <div className="mb-4">
-            <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">
-              技術要求
-            </h3>
+            <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">技術要求</h3>
             <p className="whitespace-pre-wrap text-gray-700">{techStack}</p>
           </div>
         )}
 
         <div className="mb-4">
-          <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">
-            收費項目
-          </h3>
+          <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">收費項目</h3>
           <ItemTable items={items} />
         </div>
 
         {notes && (
           <div className="mb-3">
-            <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">
-              備註
-            </h3>
+            <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">備註</h3>
             <p className="whitespace-pre-wrap text-gray-700">{notes}</p>
           </div>
         )}
