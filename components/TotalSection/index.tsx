@@ -24,11 +24,11 @@ export default function TotalSection({ items }: TotalSectionProps) {
     <div className="h-24 rounded-lg bg-gray-50 p-4">
       <div className="flex items-center justify-end text-lg font-semibold">
         <span>小計：</span>
-        <span>{toThousand(subtotal)}</span>
+        <span data-testid="subtotal-amount">{toThousand(subtotal)}</span>
       </div>
       <div className="mt-2 flex items-center justify-end border-t pt-2 text-xl font-bold text-blue-600">
         <span>總計：</span>
-        <span>{toThousand(total)}</span>
+        <span data-testid="total-amount">{toThousand(total)}</span>
       </div>
     </div>
   );
