@@ -1,11 +1,11 @@
-"use client";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+'use client';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function NotFound() {
   const router = useRouter();
   useEffect(() => {
-    router.replace("/");
+    router.replace('/');
   }, [router]);
   return null;
 }

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useDebounce } from "./useDebounce";
+import { useEffect, useState } from 'react';
+import { useDebounce } from './useDebounce';
 
 export function useDebouncedInputValue<T extends string | number>(
   value: T,

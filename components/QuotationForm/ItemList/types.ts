@@ -1,4 +1,4 @@
-import { QuotationData, QuotationItem } from "@/types/quotation";
+import { QuotationData, QuotationItem } from '@/types/quotation';
 
 export interface ItemListProps {
   items: QuotationItem[];

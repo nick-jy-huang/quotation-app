@@ -1,5 +1,5 @@
-import Textarea from "@/components/prototype/Textarea";
-import { WorkContentInfoProps } from "./types";
+import Textarea from '@/components/prototype/Textarea';
+import { WorkContentInfoProps } from './types';
 
 export default function WorkContentInfo({
   mainWorkContent,

@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { use, useState } from "react";
-import QuotationForm from "@/components/QuotationForm";
-import QuotationPreview from "@/components/QuotationPreview";
-import Button from "@/components/prototype/Button";
-import runAxeCheck from "@/utils/axe";
-import dayjs from "dayjs";
-import { useEffect } from "react";
+import { use, useState } from 'react';
+import QuotationForm from '@/components/QuotationForm';
+import QuotationPreview from '@/components/QuotationPreview';
+import Button from '@/components/prototype/Button';
+import runAxeCheck from '@/utils/axe';
+import dayjs from 'dayjs';
+import { useEffect } from 'react';
 
-type EDIT_TYPES = "edit" | "preview";
+type EDIT_TYPES = 'edit' | 'preview';
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<EDIT_TYPES>("edit");
+  const [activeTab, setActiveTab] = useState<EDIT_TYPES>('edit');
 
   const renderConponent = {
     edit: <QuotationForm />,
@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
 
   const handleRunAxeCheck = () => {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === 'development') {
       runAxeCheck();
     }
   };
@@ -40,15 +40,13 @@ export default function Home() {
           <div className="flex items-center justify-between py-4">
             <div className="flex gap-4">
               <img src="/favicon.png" alt="logo" className="h-8 w-8" />
-              <h1 className="text-2xl font-bold text-gray-900">
-                Quotation Form
-              </h1>
+              <h1 className="text-2xl font-bold text-gray-900">Quotation Form</h1>
             </div>
 
             <div className="hidden space-x-4 sm:flex">
               <Button
-                onClick={() => handleTabChange("edit")}
-                variant={activeTab === "edit" ? "primary" : "secondary"}
+                onClick={() => handleTabChange('edit')}
+                variant={activeTab === 'edit' ? 'primary' : 'secondary'}
                 className="gap-2"
                 id="edit-button"
                 aria-label="編輯報價單"
@@ -57,8 +55,8 @@ export default function Home() {
                 編輯報價單
               </Button>
               <Button
-                onClick={() => handleTabChange("preview")}
-                variant={activeTab === "preview" ? "primary" : "secondary"}
+                onClick={() => handleTabChange('preview')}
+                variant={activeTab === 'preview' ? 'primary' : 'secondary'}
                 className="gap-2"
                 id="preview-button"
                 aria-label="預覽報價單"
@@ -89,9 +87,7 @@ export default function Home() {
       </div>
 
       <footer className="sticky bottom-0 z-10 w-full space-x-2 bg-white py-4 text-center text-xs text-gray-700">
-        <span>
-          &copy; {dayjs().year()} Quotation Form For. All rights reserved.
-        </span>
+        <span>&copy; {dayjs().year()} Quotation Form For. All rights reserved.</span>
         <span className="mt-2 text-xs text-gray-700">
           All Icons by&nbsp;
           <a

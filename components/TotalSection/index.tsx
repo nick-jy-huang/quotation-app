@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { QuotationItem } from "@/types/quotation";
-import { useMemo } from "react";
-import { toThousand } from "@/utils/toThousand";
+import { QuotationItem } from '@/types/quotation';
+import { useMemo } from 'react';
+import { toThousand } from '@/utils/toThousand';
 
 interface TotalSectionProps {
   items: QuotationItem[];
