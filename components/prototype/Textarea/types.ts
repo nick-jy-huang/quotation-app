@@ -1,7 +1,7 @@
-import { TextareaHTMLAttributes, forwardRef } from "react";
+import { TextareaHTMLAttributes, forwardRef } from 'react';
 
 export interface TextareaProps
-  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "onChange"> {
+  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   label?: string;
   error?: string;
   helperText?: string;

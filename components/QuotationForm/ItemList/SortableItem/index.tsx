@@ -1,11 +1,11 @@
-import Input from "@/components/prototype/Input";
-import Button from "@/components/prototype/Button";
-import { toThousand } from "@/utils/toThousand";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-import DragHandle from "@/components/QuotationForm/ItemList/DragHandle";
+import Input from '@/components/prototype/Input';
+import Button from '@/components/prototype/Button';
+import { toThousand } from '@/utils/toThousand';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+import DragHandle from '@/components/QuotationForm/ItemList/DragHandle';
 
-import { SortableItemProps } from "./types";
+import { SortableItemProps } from './types';
 
 export default function SortableItem({
   item,
@@ -14,19 +14,14 @@ export default function SortableItem({
   removeItem,
   itemsLength,
 }: SortableItemProps) {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id: item.id });
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
+    id: item.id,
+  });
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    background: isDragging ? "#f3f4f6" : undefined,
+    background: isDragging ? '#f3f4f6' : undefined,
     zIndex: isDragging ? 10 : undefined,
   };
 
@@ -46,7 +41,7 @@ export default function SortableItem({
             value={item.name}
             size="sm"
             placeholder="請輸入項目..."
-            onChange={(value) => updateItem(item.id, "name", value)}
+            onChange={(value) => updateItem(item.id, 'name', value)}
           />
         </div>
         <Input
@@ -57,7 +52,7 @@ export default function SortableItem({
           min={0}
           value={item.hourlyRate}
           placeholder="請輸入時薪..."
-          onChange={(value) => updateItem(item.id, "hourlyRate", value)}
+          onChange={(value) => updateItem(item.id, 'hourlyRate', value)}
         />
         <Input
           label="時數"
@@ -67,16 +62,12 @@ export default function SortableItem({
           size="sm"
           value={item.hours}
           placeholder="請輸入時數..."
-          onChange={(value) => updateItem(item.id, "hours", value)}
+          onChange={(value) => updateItem(item.id, 'hours', value)}
         />
         <div className="text-mx flex items-center justify-end pt-6 text-right font-medium text-gray-700">
           <div className="pr-4 text-xs">{toThousand(item.total)}</div>
           {itemsLength > 1 && (
-            <Button
-              onClick={() => removeItem(item.id)}
-              variant="ghost"
-              size="sm"
-            >
+            <Button onClick={() => removeItem(item.id)} variant="ghost" size="sm">
               <i className="fa-solid fa-trash text-red-500"></i>
             </Button>
           )}

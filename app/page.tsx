@@ -1,19 +1,26 @@
-"use client";
+'use client';
 
-import { use, useState } from "react";
-import QuotationForm from "@/components/QuotationForm";
-import QuotationPreview from "@/components/QuotationPreview";
-import Button from "@/components/prototype/Button";
-import runAxeCheck from "@/utils/axe";
-import dayjs from "dayjs";
-import { useEffect } from "react";
+import { useState } from 'react';
+import QuotationForm from '@/components/QuotationForm';
+import QuotationPreview from '@/components/QuotationPreview';
+import Button from '@/components/prototype/Button';
+import runAxeCheck from '@/utils/axe';
+import dayjs from 'dayjs';
+import { useEffect } from 'react';
+import QuotationHistoryList from '@/components/QuotationHistoryList';
+import { useQuotationStore } from '@/stores/quotationStore';
+import { QuotationData } from '@/types/quotation';
+import { handleSaveLocaleStorage } from '@/utils/saveLocaleStorage';
+import QuotationHistoryModal from '@/components/QuotationHistoryList/Modal';
 
-type EDIT_TYPES = "edit" | "preview";
+type EDIT_TYPES = 'edit' | 'preview';
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<EDIT_TYPES>("edit");
+  const [activeTab, setActiveTab] = useState<EDIT_TYPES>('edit');
+  const [showHistory, setShowHistory] = useState(false);
+  const { quotationHistory, setQuotationHistory, updateQuotation } = useQuotationStore();
 
-  const renderConponent = {
+  const renderComponent = {
     edit: <QuotationForm />,
     preview: <QuotationPreview />,
   };
@@ -23,9 +30,21 @@ export default function Home() {
   }, []);
 
   const handleRunAxeCheck = () => {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === 'development') {
       runAxeCheck();
     }
+  };
+
+  const handleClearQuotationHistory = () => {
+    setQuotationHistory([]);
+    handleSaveLocaleStorage('quotation_history', []);
+  };
+
+  const handleLoadQuotation = (history: QuotationData) => {
+    Object.entries(history).forEach(([key, value]) => {
+      updateQuotation(key as keyof QuotationData, value);
+    });
+    setShowHistory(false);
   };
 
   const handleTabChange = (tab: EDIT_TYPES) => {
@@ -40,15 +59,13 @@ export default function Home() {
           <div className="flex items-center justify-between py-4">
             <div className="flex gap-4">
               <img src="/favicon.png" alt="logo" className="h-8 w-8" />
-              <h1 className="text-2xl font-bold text-gray-900">
-                Quotation Form
-              </h1>
+              <h1 className="text-2xl font-bold text-gray-900">Quotation Form</h1>
             </div>
 
             <div className="hidden space-x-4 sm:flex">
               <Button
-                onClick={() => handleTabChange("edit")}
-                variant={activeTab === "edit" ? "primary" : "secondary"}
+                onClick={() => handleTabChange('edit')}
+                variant={activeTab === 'edit' ? 'primary' : 'secondary'}
                 className="gap-2"
                 id="edit-button"
                 aria-label="編輯報價單"
@@ -57,8 +74,8 @@ export default function Home() {
                 編輯報價單
               </Button>
               <Button
-                onClick={() => handleTabChange("preview")}
-                variant={activeTab === "preview" ? "primary" : "secondary"}
+                onClick={() => handleTabChange('preview')}
+                variant={activeTab === 'preview' ? 'primary' : 'secondary'}
                 className="gap-2"
                 id="preview-button"
                 aria-label="預覽報價單"
@@ -69,7 +86,7 @@ export default function Home() {
             </div>
             <div className="flex sm:hidden">
               <select
-                className="block w-32 rounded-md border border-gray-300 bg-white py-2 pr-0 pl-2 text-sm text-gray-900 focus:border-blue-700 focus:ring-2 focus:ring-blue-700 focus:outline-none"
+                className="block w-32 rounded-md border border-gray-300 bg-white py-2 p-2 text-sm text-gray-900 focus:border-blue-700 focus:ring-2 focus:ring-blue-700 focus:outline-none"
                 value={activeTab}
                 onChange={(e) => setActiveTab(e.target.value as EDIT_TYPES)}
                 aria-label="切換頁籤"
@@ -84,14 +101,41 @@ export default function Home() {
 
       <div className="flex-1 overflow-y-auto">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          {renderConponent[activeTab]}
+          {quotationHistory.length > 0 && (
+            <Button
+              className="fixed bottom-16 left-8  xl:hidden"
+              variant="primary"
+              aria-label="查看匯出紀錄"
+              onClick={() => setShowHistory(true)}
+            >
+              <i className="fa-solid fa-clock-rotate-left text-sm"></i>
+            </Button>
+          )}
+
+          <QuotationHistoryModal open={showHistory} onClose={() => setShowHistory(false)}>
+            <QuotationHistoryList
+              quotationHistory={quotationHistory}
+              onClear={handleClearQuotationHistory}
+              onLoad={handleLoadQuotation}
+            />
+          </QuotationHistoryModal>
+
+          <div className="relative">
+            <div className="hidden xl:block absolute top-2 left-[-4%]">
+              <QuotationHistoryList
+                quotationHistory={quotationHistory}
+                onClear={handleClearQuotationHistory}
+                onLoad={handleLoadQuotation}
+              />
+            </div>
+          </div>
+
+          {renderComponent[activeTab]}
         </div>
       </div>
 
       <footer className="sticky bottom-0 z-10 w-full space-x-2 bg-white py-4 text-center text-xs text-gray-700">
-        <span>
-          &copy; {dayjs().year()} Quotation Form For. All rights reserved.
-        </span>
+        <span>&copy; {dayjs().year()} Quotation Form For. All rights reserved.</span>
         <span className="mt-2 text-xs text-gray-700">
           All Icons by&nbsp;
           <a

@@ -1,11 +1,11 @@
-import { toThousand } from "@/utils/toThousand";
-import { useMemo } from "react";
+import { toThousand } from '@/utils/toThousand';
+import { useMemo } from 'react';
 
-import { ItemTableProps } from "./types";
+import { ItemTableProps } from './types';
 
 const columns = [
-  { label: "項目", className: "text-left" },
-  { label: "小計", className: "text-right" },
+  { label: '項目', className: 'text-left' },
+  { label: '小計', className: 'text-right' },
 ];
 
 export default function ItemTable({ items }: ItemTableProps) {
@@ -35,13 +35,8 @@ export default function ItemTable({ items }: ItemTableProps) {
         </thead>
         <tbody>
           {itemsWithTotal.map((item, index) => (
-            <tr
-              key={item.id}
-              className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
-            >
-              <td className="border border-gray-300 px-2 py-1 text-xs">
-                {item.name || "未填寫"}
-              </td>
+            <tr key={item.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td className="border border-gray-300 px-2 py-1 text-xs">{item.name || '未填寫'}</td>
               <td className="border border-gray-300 px-2 py-1 text-right text-xs">
                 {toThousand(item.total)}
               </td>

@@ -1,20 +1,11 @@
-import { ItemListProps } from "./types";
-import {
-  DndContext,
-  closestCenter,
-  PointerSensor,
-  useSensor,
-  useSensors,
-} from "@dnd-kit/core";
-import {
-  SortableContext,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import ClientOnly from "@/components/ClientOnly";
-import SortableItem from "./SortableItem";
-import ItemHeader from "./ItemHeader";
-import { useMemo } from "react";
-import type { DragEndEvent } from "@dnd-kit/core";
+import { ItemListProps } from './types';
+import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import ClientOnly from '@/components/ClientOnly';
+import SortableItem from './SortableItem';
+import ItemHeader from './ItemHeader';
+import { useMemo } from 'react';
+import type { DragEndEvent } from '@dnd-kit/core';
 
 export default function ItemList({
   items,
@@ -46,11 +37,7 @@ export default function ItemList({
   const ids = items.map((i) => i.id);
   return (
     <ClientOnly>
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCenter}
-        onDragEnd={handleDragEnd}
-      >
+      <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <ItemHeader onAddItem={addItem} />
         <SortableContext items={ids} strategy={verticalListSortingStrategy}>
           {itemsWithTotal.map((item, index) => (

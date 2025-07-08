@@ -1,21 +1,37 @@
-import { useQuotationStore } from "@/stores/quotationStore";
-import BaseInfo from "@/components/QuotationForm/BaseInfo";
-import ClientInfo from "@/components/QuotationForm/ClientInfo";
-import CompanyInfo from "@/components/QuotationForm/CompanyInfo";
-import ItemList from "@/components/QuotationForm/ItemList";
-import Textarea from "@/components/prototype/Textarea";
-import TotalSection from "@/components/TotalSection";
-import WorkContentInfo from "@/components/QuotationForm/WorkContentInfo";
+import { useQuotationStore } from '@/stores/quotationStore';
+import BaseInfo from '@/components/QuotationForm/BaseInfo';
+import ClientInfo from '@/components/QuotationForm/ClientInfo';
+import CompanyInfo from '@/components/QuotationForm/CompanyInfo';
+import ItemList from '@/components/QuotationForm/ItemList';
+import Textarea from '@/components/prototype/Textarea';
+import TotalSection from '@/components/TotalSection';
+import WorkContentInfo from '@/components/QuotationForm/WorkContentInfo';
+import { useEffect } from 'react';
+import { handleGetLocaleStorage } from '@/utils/saveLocaleStorage';
 
 export default function QuotationForm() {
-  const { quotation, updateQuotation, addItem, updateItem, removeItem } =
+  const { quotation, updateQuotation, addItem, updateItem, removeItem, setQuotationHistory } =
     useQuotationStore();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedQuotation = handleGetLocaleStorage('quotation_current') || {};
+      if (savedQuotation) {
+        Object.entries(savedQuotation).forEach(([key, value]) => {
+          updateQuotation(key as keyof typeof quotation, value);
+        });
+      }
+
+      const history = handleGetLocaleStorage('quotation_history') || [];
+      setQuotationHistory(history);
+    }
+  }, []);
 
   function reorderItems(from: number, to: number) {
     const updated = Array.from(quotation.items);
     const [moved] = updated.splice(from, 1);
     updated.splice(to, 0, moved);
-    updateQuotation("items", updated);
+    updateQuotation('items', updated);
   }
 
   return (
@@ -31,10 +47,8 @@ export default function QuotationForm() {
         <WorkContentInfo
           mainWorkContent={quotation.mainWorkContent}
           techStack={quotation.techStack}
-          onMainWorkContentChange={(value) =>
-            updateQuotation("mainWorkContent", value)
-          }
-          onTechStackChange={(value) => updateQuotation("techStack", value)}
+          onMainWorkContentChange={(value) => updateQuotation('mainWorkContent', value)}
+          onTechStackChange={(value) => updateQuotation('techStack', value)}
         />
 
         <ItemList
@@ -48,7 +62,7 @@ export default function QuotationForm() {
         <Textarea
           label="備註"
           value={quotation.notes}
-          onChange={(value) => updateQuotation("notes", value)}
+          onChange={(value) => updateQuotation('notes', value)}
           placeholder="請輸入備註..."
         />
 

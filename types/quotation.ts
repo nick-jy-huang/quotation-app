@@ -3,7 +3,6 @@ export interface QuotationItem {
   name: string;
   hourlyRate: number;
   hours: number;
-  total: number;
 }
 
 export interface QuotationData {
@@ -23,10 +22,14 @@ export interface QuotationData {
   total: number;
   notes: string;
   validUntil: string;
+  fileName?: string;
+  exportedAt?: string;
 }
 
 export interface QuotationStore {
   quotation: QuotationData;
+  quotationHistory: QuotationData[];
+  setQuotationHistory: (history: QuotationData[]) => void;
   addItem: () => void;
   updateItem: (id: string, field: keyof QuotationItem, value: any) => void;
   removeItem: (id: string) => void;

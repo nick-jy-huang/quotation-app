@@ -1,10 +1,7 @@
-import { CompanyInfoProps } from "./types";
-import Input from "@/components/prototype/Input";
+import { CompanyInfoProps } from './types';
+import Input from '@/components/prototype/Input';
 
-export default function CompanyInfo({
-  quotation,
-  updateQuotation,
-}: CompanyInfoProps) {
+export default function CompanyInfo({ quotation, updateQuotation }: CompanyInfoProps) {
   return (
     <div>
       <h3 className="mb-2 text-lg font-semibold text-gray-700">接案人資訊</h3>
@@ -13,14 +10,14 @@ export default function CompanyInfo({
           label="接案人"
           value={quotation.freelancer}
           placeholder="請輸入接案人..."
-          onChange={(value) => updateQuotation("freelancer", value)}
+          onChange={(value) => updateQuotation('freelancer', value)}
         />
         <Input
           label="信箱"
           type="email"
           value={quotation.companyEmail}
           placeholder="請輸入信箱..."
-          onChange={(value) => updateQuotation("companyEmail", value)}
+          onChange={(value) => updateQuotation('companyEmail', value)}
         />
       </div>
     </div>

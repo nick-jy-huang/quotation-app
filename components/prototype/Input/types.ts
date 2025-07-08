@@ -1,9 +1,9 @@
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes } from 'react';
 
-export type InputSize = "sm" | "md" | "lg";
+export type InputSize = 'sm' | 'md' | 'lg';
 
 export interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange" | "size"> {
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'size'> {
   label?: string;
   error?: string;
   helperText?: string;
