@@ -14,14 +14,16 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Quotation Form',
-  description: 'Make quotations easily.',
+  description:
+    'Quotation App 是一款簡易好用的線上報價單編輯與預覽工具，支援多欄位填寫、PDF 匯出，讓你輕鬆管理各類型專案報價需求。',
   openGraph: {
     title: 'Quotation Form',
-    description: 'Make quotations easily.',
+    description:
+      'Quotation App 是一款簡易好用的線上報價單編輯與預覽工具，支援多欄位填寫、PDF 匯出，讓你輕鬆管理各類型專案報價需求。',
     url: 'https://quotation-app-zeta.vercel.app/',
     images: [
       {
-        url: 'https://quotation-app-zeta.vercel.app/image.png',
+        url: 'https://quotation-app-zeta.vercel.app/image.jpg',
         width: 1200,
         height: 630,
       },
