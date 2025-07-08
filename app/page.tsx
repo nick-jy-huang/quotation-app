@@ -59,7 +59,7 @@ export default function Home() {
           <div className="flex items-center justify-between py-4">
             <div className="flex gap-4">
               <img src="/favicon.png" alt="logo" className="h-8 w-8" />
-              <h1 className="text-2xl font-bold text-gray-900">Quotation Form</h1>
+              <h1 className="text-2xl font-bold text-gray-900">Quotation App</h1>
             </div>
 
             <div className="hidden space-x-4 sm:flex">
@@ -135,7 +135,7 @@ export default function Home() {
       </div>
 
       <footer className="sticky bottom-0 z-10 w-full space-x-2 bg-white py-4 text-center text-xs text-gray-700">
-        <span>&copy; {dayjs().year()} Quotation Form For. All rights reserved.</span>
+        <span>&copy; {dayjs().year()} Quotation App For. All rights reserved.</span>
         <span className="mt-2 text-xs text-gray-700">
           All Icons by&nbsp;
           <a
@@ -146,6 +146,16 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             Flaticon
+          </a>
+          、
+          <a
+            href="https://fontawesome.com/"
+            title="fontawesome"
+            className="underline hover:text-blue-700"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            fontawesome
           </a>
         </span>
       </footer>
