@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 import QuotationForm from "@/components/QuotationForm";
 import QuotationPreview from "@/components/QuotationPreview";
 import Button from "@/components/prototype/Button";
 import runAxeCheck from "@/utils/axe";
+import dayjs from "dayjs";
+import { useEffect } from "react";
 
 type EDIT_TYPES = "edit" | "preview";
 
@@ -16,10 +18,18 @@ export default function Home() {
     preview: <QuotationPreview />,
   };
 
-  const handleTabChange = (tab: EDIT_TYPES) => {
+  useEffect(() => {
+    handleRunAxeCheck();
+  }, []);
+
+  const handleRunAxeCheck = () => {
     if (process.env.NODE_ENV === "development") {
       runAxeCheck();
     }
+  };
+
+  const handleTabChange = (tab: EDIT_TYPES) => {
+    handleRunAxeCheck();
     setActiveTab(tab);
   };
 
@@ -40,6 +50,8 @@ export default function Home() {
                 onClick={() => handleTabChange("edit")}
                 variant={activeTab === "edit" ? "primary" : "secondary"}
                 className="gap-2"
+                id="edit-button"
+                aria-label="編輯報價單"
               >
                 <i className="fa-solid fa-pen-to-square"></i>
                 編輯報價單
@@ -48,6 +60,8 @@ export default function Home() {
                 onClick={() => handleTabChange("preview")}
                 variant={activeTab === "preview" ? "primary" : "secondary"}
                 className="gap-2"
+                id="preview-button"
+                aria-label="預覽報價單"
               >
                 <i className="fa-solid fa-eye"></i>
                 預覽報價單
@@ -76,8 +90,7 @@ export default function Home() {
 
       <footer className="sticky bottom-0 z-10 w-full space-x-2 bg-white py-4 text-center text-xs text-gray-700">
         <span>
-          &copy; {new Date().getFullYear()} Quotation Form For. All rights
-          reserved.
+          &copy; {dayjs().year()} Quotation Form For. All rights reserved.
         </span>
         <span className="mt-2 text-xs text-gray-700">
           All Icons by&nbsp;

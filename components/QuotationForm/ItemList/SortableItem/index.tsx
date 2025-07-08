@@ -45,6 +45,7 @@ export default function SortableItem({
             label={`項目 ${index + 1} `}
             value={item.name}
             size="sm"
+            placeholder="請輸入項目..."
             onChange={(value) => updateItem(item.id, "name", value)}
           />
         </div>
@@ -55,6 +56,7 @@ export default function SortableItem({
           step={1}
           min={0}
           value={item.hourlyRate}
+          placeholder="請輸入時薪..."
           onChange={(value) => updateItem(item.id, "hourlyRate", value)}
         />
         <Input
@@ -64,6 +66,7 @@ export default function SortableItem({
           min={0}
           size="sm"
           value={item.hours}
+          placeholder="請輸入時數..."
           onChange={(value) => updateItem(item.id, "hours", value)}
         />
         <div className="text-mx flex items-center justify-end pt-6 text-right font-medium text-gray-700">

@@ -52,28 +52,10 @@ export default function QuotationPreview() {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <div className="relative">
-        <div className="absolute left-[-8rem]">{/* 輸出紀錄 */}</div>
-        <div className="absolute right-0 md:right-[-8rem]">
-          <div className="hidden md:flex">
-            <Button
-              onClick={handleExportPDF}
-              variant="warning"
-              className="gap-1"
-            >
-              <i className="fa-solid fa-download"></i> 匯出 PDF
-            </Button>
-          </div>
-          <div className="flex md:hidden">
-            <Button
-              onClick={handleExportPDF}
-              variant="warning"
-              className="gap-1"
-            >
-              <i className="fa-solid fa-download"></i> 匯出 PDF
-            </Button>
-          </div>
-        </div>
+      <div className="flex justify-end mb-4">
+        <Button onClick={handleExportPDF} variant="warning" className="gap-2">
+          <i className="fa-solid fa-download"></i> 匯出 PDF
+        </Button>
       </div>
 
       <div
@@ -98,7 +80,7 @@ export default function QuotationPreview() {
         {mainWorkContent && (
           <div className="mb-4">
             <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">
-              備註
+              主要工作內容
             </h3>
             <p className="whitespace-pre-wrap text-gray-700">
               {mainWorkContent}
@@ -109,7 +91,7 @@ export default function QuotationPreview() {
         {techStack && (
           <div className="mb-4">
             <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">
-              備註
+              技術要求
             </h3>
             <p className="whitespace-pre-wrap text-gray-700">{techStack}</p>
           </div>
