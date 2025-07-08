@@ -41,7 +41,7 @@ export const useQuotationStore = create<QuotationStore>((set, get) => ({
     set({
       quotation: {
         ...quotation,
-        items: [...quotation.items, newItem],
+        items: [...quotation.items, { ...newItem, id: generateId() }],
       },
     });
     get().calculateTotals();
