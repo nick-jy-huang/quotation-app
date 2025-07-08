@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://quotation-app-zeta.vercel.app/favicon.png" width="80" alt="Quotation App Logo">
+  <img src="https://quotation-app-zeta.vercel.app/favicon.png" width="100" alt="Quotation App Logo">
 </p>
 
 <h1 align="center">Quotation App</h1>
@@ -14,6 +14,10 @@
 - 支援 Input Debounce，提升輸入體驗
 - 社群分享自動顯示預覽圖（Open Graph）
 - Axe-core 驗證無障礙設計
+- 匯出 PDF 並自動儲存匯出紀錄於 localStorage，支援歷史紀錄載入與清除
+- RWD 浮動匯出按鈕與匯出紀錄，手機／平板體驗佳
+- Prettier 程式碼格式化與 TypeScript 嚴謹型別
+- 元件結構清楚，易於維護與擴充
 
 ## 技術架構
 
@@ -21,6 +25,10 @@
 - React 18
 - TypeScript
 - Tailwind CSS
+- Zustand 狀態管理
+- dayjs 處理日期
+- html2canvas + jsPDF 匯出 PDF
+- axe-core 無障礙檢查
 
 ## 安裝與啟動
 
