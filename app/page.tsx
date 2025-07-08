@@ -1,6 +1,6 @@
 'use client';
 
-import { use, useState } from 'react';
+import { useState } from 'react';
 import QuotationForm from '@/components/QuotationForm';
 import QuotationPreview from '@/components/QuotationPreview';
 import Button from '@/components/prototype/Button';
@@ -11,11 +11,13 @@ import QuotationHistoryList from '@/components/QuotationHistoryList';
 import { useQuotationStore } from '@/stores/quotationStore';
 import { QuotationData } from '@/types/quotation';
 import { handleSaveLocaleStorage } from '@/utils/saveLocaleStorage';
+import QuotationHistoryModal from '@/components/QuotationHistoryList/Modal';
 
 type EDIT_TYPES = 'edit' | 'preview';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<EDIT_TYPES>('edit');
+  const [showHistory, setShowHistory] = useState(false);
   const { quotationHistory, setQuotationHistory, updateQuotation } = useQuotationStore();
 
   const renderComponent = {
@@ -42,6 +44,7 @@ export default function Home() {
     Object.entries(history).forEach(([key, value]) => {
       updateQuotation(key as keyof QuotationData, value);
     });
+    setShowHistory(false);
   };
 
   const handleTabChange = (tab: EDIT_TYPES) => {
@@ -83,7 +86,7 @@ export default function Home() {
             </div>
             <div className="flex sm:hidden">
               <select
-                className="block w-32 rounded-md border border-gray-300 bg-white py-2 pr-0 pl-2 text-sm text-gray-900 focus:border-blue-700 focus:ring-2 focus:ring-blue-700 focus:outline-none"
+                className="block w-32 rounded-md border border-gray-300 bg-white py-2 p-2 text-sm text-gray-900 focus:border-blue-700 focus:ring-2 focus:ring-blue-700 focus:outline-none"
                 value={activeTab}
                 onChange={(e) => setActiveTab(e.target.value as EDIT_TYPES)}
                 aria-label="切換頁籤"
@@ -98,13 +101,35 @@ export default function Home() {
 
       <div className="flex-1 overflow-y-auto">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <div className="relative">
+          {quotationHistory.length > 0 && (
+            <Button
+              className="fixed bottom-16 left-8  xl:hidden"
+              variant="primary"
+              aria-label="查看匯出紀錄"
+              onClick={() => setShowHistory(true)}
+            >
+              <i className="fa-solid fa-clock-rotate-left text-sm"></i>
+            </Button>
+          )}
+
+          <QuotationHistoryModal open={showHistory} onClose={() => setShowHistory(false)}>
             <QuotationHistoryList
               quotationHistory={quotationHistory}
               onClear={handleClearQuotationHistory}
               onLoad={handleLoadQuotation}
             />
+          </QuotationHistoryModal>
+
+          <div className="relative">
+            <div className="hidden xl:block absolute top-2 left-[-4%]">
+              <QuotationHistoryList
+                quotationHistory={quotationHistory}
+                onClear={handleClearQuotationHistory}
+                onLoad={handleLoadQuotation}
+              />
+            </div>
           </div>
+
           {renderComponent[activeTab]}
         </div>
       </div>

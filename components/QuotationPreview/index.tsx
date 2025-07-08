@@ -78,7 +78,16 @@ export default function QuotationPreview() {
   return (
     <div className="mx-auto max-w-4xl">
       <div className="relative">
-        <div className="absolute top-0 right-[-14%]">
+        <Button
+          onClick={handleExportPDF}
+          variant="warning"
+          className="fixed bottom-18 right-8 w-auto xl:hidden gap-2"
+          aria-label="匯出 PDF"
+        >
+          <i className="fa-solid fa-download"></i>
+        </Button>
+
+        <div className="hidden xl:block xl:absolute xl:top-0 xl:right-[-14%]">
           <Button onClick={handleExportPDF} variant="warning" className="gap-2">
             <i className="fa-solid fa-download"></i> 匯出 PDF
           </Button>
