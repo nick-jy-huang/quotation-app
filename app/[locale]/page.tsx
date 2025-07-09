@@ -75,7 +75,7 @@ export default function Home() {
           )}
 
           <div className="relative">
-            <div className="absolute top-0 left-[-6%] hidden rounded-xl bg-white p-4 xl:block">
+            <div className="absolute top-0 left-[-6%] hidden xl:block">
               <QuotationHistoryList
                 quotationHistory={quotationHistory}
                 onClear={handleClearQuotationHistory}
