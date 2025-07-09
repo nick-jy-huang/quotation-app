@@ -11,8 +11,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Update PR Description with Commits
-        uses: akashdhruv/pull-request-description@v2.0.0
+        uses: github-actions-x/commit-message@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           commit_mode: true
-          commit_mode_title: "📝 Commits in this PR" 
+          commit_mode_title: '📝 Commits in this PR'
