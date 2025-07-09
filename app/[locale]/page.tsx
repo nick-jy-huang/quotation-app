@@ -57,7 +57,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-screen flex-col ">
       <header className="z-10 flex-shrink-0 bg-white shadow-sm">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-4">
@@ -65,7 +65,8 @@ export default function Home() {
               <img src="/favicon.png" alt="logo" className="h-8 w-8" />
               <h1 className="text-2xl font-bold text-gray-900 hidden lg:block">Quotation App</h1>
             </div>
-            <div className="flex items-center gap-2">
+
+            <div id="desktop-tab-switcher" className="flex items-center gap-2">
               <div className="hidden space-x-4 sm:flex">
                 <Button
                   onClick={() => handleTabChange('edit')}
@@ -90,7 +91,8 @@ export default function Home() {
                 <LanguageSwitcher />
               </div>
             </div>
-            <div className="flex sm:hidden gap-2">
+
+            <div id="mobile-tab-switcher" className="flex sm:hidden gap-2">
               <div className="relative">
                 <select
                   className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer"
@@ -110,7 +112,7 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-scroll">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           {quotationHistory.length > 0 && (
             <Button
@@ -123,14 +125,6 @@ export default function Home() {
             </Button>
           )}
 
-          <QuotationHistoryModal open={showHistory} onClose={() => setShowHistory(false)}>
-            <QuotationHistoryList
-              quotationHistory={quotationHistory}
-              onClear={handleClearQuotationHistory}
-              onLoad={handleLoadQuotation}
-            />
-          </QuotationHistoryModal>
-
           <div className="relative">
             <div className="hidden xl:block absolute top-2 left-[-4%]">
               <QuotationHistoryList
@@ -140,6 +134,14 @@ export default function Home() {
               />
             </div>
           </div>
+
+          <QuotationHistoryModal open={showHistory} onClose={() => setShowHistory(false)}>
+            <QuotationHistoryList
+              quotationHistory={quotationHistory}
+              onClear={handleClearQuotationHistory}
+              onLoad={handleLoadQuotation}
+            />
+          </QuotationHistoryModal>
 
           {renderComponent[activeTab]}
         </div>
