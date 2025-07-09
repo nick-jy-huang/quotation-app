@@ -1,18 +1,32 @@
-name: Auto Update PR Description
+name: 📝 Auto Update PR Description with Commits
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened, edited]
+    types: [opened, synchronize, reopened]
 
 jobs:
-  update-pr-description:
+  update-pr-body:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Update PR Description with Commits
-        uses: github-actions-x/commit-message@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_mode: true
-          commit_mode_title: '📝 Commits in this PR'
+          fetch-depth: 0
+
+      - name: Get commits between base and head
+        id: get_commits
+        run: |
+          COMMITS=$(git log origin/${{ github.event.pull_request.base.ref }}..HEAD --pretty=format:"- %s (%an)")
+          echo "commits<<EOF" >> $GITHUB_OUTPUT
+          echo "${COMMITS}" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Update PR description
+        uses: peter-evans/update-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            📝 **Commits included in this PR**:
+
+            ${{ steps.get_commits.outputs.commits }}
