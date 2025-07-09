@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.5](https://github.com/nick-jy-huang/quotation-app/compare/v0.2.4...v0.2.5) (2025-07-09)
+
+
+### Bug Fixes
+
+* release config ([7605881](https://github.com/nick-jy-huang/quotation-app/commit/7605881b341bcf5bd9acf676824fa134ccee1cf9))
+* tailwind css kit ([e66b87a](https://github.com/nick-jy-huang/quotation-app/commit/e66b87af2e5f14e693504d46c6f4a6c5f38a3e50))
+
 ## [0.2.4](https://github.com/nick-jy-huang/quotation-app/compare/0.2.3...v0.2.4) (2025-07-09)
 
 
