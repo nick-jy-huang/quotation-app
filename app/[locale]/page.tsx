@@ -15,6 +15,7 @@ import QuotationHistoryModal from '@/components/QuotationHistoryList/Modal';
 import { version } from '@/package.json';
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import toast, { Toaster } from 'react-hot-toast';
 
 type EDIT_TYPES = 'edit' | 'preview';
 
@@ -42,6 +43,7 @@ export default function Home() {
   const handleClearQuotationHistory = () => {
     setQuotationHistory([]);
     handleSaveLocaleStorage('quotation_history', []);
+    toast.success(t('page_clear_history_success'));
   };
 
   const handleLoadQuotation = (history: QuotationData) => {
@@ -49,6 +51,7 @@ export default function Home() {
       updateQuotation(key as keyof QuotationData, value);
     });
     setShowHistory(false);
+    toast.success(t('page_load_quotation_success'));
   };
 
   const handleTabChange = (tab: EDIT_TYPES) => {
@@ -142,7 +145,7 @@ export default function Home() {
               onLoad={handleLoadQuotation}
             />
           </QuotationHistoryModal>
-
+          <Toaster />
           {renderComponent[activeTab]}
         </div>
       </div>

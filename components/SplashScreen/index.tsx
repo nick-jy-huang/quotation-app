@@ -6,6 +6,9 @@ export default function SplashScreen() {
   const [hide, setHide] = useState(false);
   const [show, setShow] = useState(true);
 
+  const styleClass =
+    'fixed inset-0 z-20 flex items-center justify-center bg-white pb-12 transition-transform duration-700 will-change-transform';
+
   useEffect(() => {
     const delay = 1000;
     const timer = setTimeout(() => setHide(true), delay);
@@ -20,12 +23,16 @@ export default function SplashScreen() {
 
   return (
     <div
-      className={`fixed inset-0 z-20 flex items-center justify-center bg-white transition-transform duration-700 will-change-transform ${hide ? 'pointer-events-none -translate-y-full' : ''} `}
+      role="region"
+      aria-label="Loading..."
+      className={`${styleClass} ${hide ? 'pointer-events-none -translate-y-full' : ''} `}
     >
       <div>
         <img src="/favicon.png" alt="logo" className="mx-auto mb-4 h-16 w-16 animate-bounce" />
-        <h2 className="text-center text-lg font-bold text-gray-800">Quotation App</h2>
-        <h3 className="text-center text-lg font-bold text-gray-800">載入中...</h3>
+        <h2 className="mb-1 border-b border-gray-300 text-center text-lg font-bold text-gray-800">
+          - Quotation App -
+        </h2>
+        <h3 className="text-center text-lg font-bold text-gray-800">Loading...</h3>
       </div>
     </div>
   );

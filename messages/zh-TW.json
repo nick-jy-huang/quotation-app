@@ -8,6 +8,7 @@
   "quotationpreview_notes": "備註",
   "quotationpreview_contacthint": "如有任何問題，歡迎隨時聯繫。",
   "quotationpreview_title": "報價單",
+  "quotationpreview_export_success": "匯出成功",
   "quotationhistorylist_clearhistory": "清空歷史",
   "quotationhistorylist_exporthistory": "匯出歷史",
   "quotationhistorylist_modal_close": "關閉",
@@ -71,5 +72,7 @@
   "page_footer_copyright": "Quotation App For. All rights reserved.",
   "page_footer_icons_by": "所有圖示來源：",
   "page_footer_version": "版本",
-  "page_switch_language": "切換語言"
+  "page_switch_language": "切換語言",
+  "page_clear_history_success": "已清除匯出歷史",
+  "page_load_quotation_success": "已載入報價單"
 }

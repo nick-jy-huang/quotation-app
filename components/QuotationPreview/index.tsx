@@ -13,6 +13,7 @@ import Button from '@/components/prototype/Button';
 import dayjs from 'dayjs';
 import { handleSaveExportPDFToLocal, handleGetLocaleStorage } from '@/utils/saveLocaleStorage';
 import { useTranslations } from 'next-intl';
+import toast from 'react-hot-toast';
 
 export default function QuotationPreview() {
   const t = useTranslations();
@@ -75,6 +76,8 @@ export default function QuotationPreview() {
 
     const updatedHistory = handleGetLocaleStorage('quotation_history') || [];
     setQuotationHistory(updatedHistory);
+
+    toast.success(t('quotationpreview_export_success'));
   };
 
   return (
