@@ -12,11 +12,14 @@ import { useQuotationStore } from '@/stores/quotationStore';
 import { QuotationData } from '@/types/quotation';
 import { handleSaveLocaleStorage } from '@/utils/saveLocaleStorage';
 import QuotationHistoryModal from '@/components/QuotationHistoryList/Modal';
-import { version } from '../package.json';
+import { version } from '@/package.json';
+import { useTranslations } from 'next-intl';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 type EDIT_TYPES = 'edit' | 'preview';
 
 export default function Home() {
+  const t = useTranslations();
   const [activeTab, setActiveTab] = useState<EDIT_TYPES>('edit');
   const [showHistory, setShowHistory] = useState(false);
   const { quotationHistory, setQuotationHistory, updateQuotation } = useQuotationStore();
@@ -30,9 +33,9 @@ export default function Home() {
     handleRunAxeCheck();
   }, []);
 
-  const handleRunAxeCheck = () => {
-    if (process.env.NODE_ENV === 'development') {
-      runAxeCheck();
+  const handleRunAxeCheck = async () => {
+    if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
+      await runAxeCheck();
     }
   };
 
@@ -62,38 +65,40 @@ export default function Home() {
               <img src="/favicon.png" alt="logo" className="h-8 w-8" />
               <h1 className="text-2xl font-bold text-gray-900">Quotation App</h1>
             </div>
-
-            <div className="hidden space-x-4 sm:flex">
-              <Button
-                onClick={() => handleTabChange('edit')}
-                variant={activeTab === 'edit' ? 'primary' : 'secondary'}
-                className="gap-2"
-                id="edit-button"
-                aria-label="編輯報價單"
-              >
-                <i className="fa-solid fa-pen-to-square"></i>
-                編輯報價單
-              </Button>
-              <Button
-                onClick={() => handleTabChange('preview')}
-                variant={activeTab === 'preview' ? 'primary' : 'secondary'}
-                className="gap-2"
-                id="preview-button"
-                aria-label="預覽報價單"
-              >
-                <i className="fa-solid fa-eye"></i>
-                預覽報價單
-              </Button>
+            <div className="flex items-center gap-2">
+              <div className="hidden space-x-4 sm:flex">
+                <Button
+                  onClick={() => handleTabChange('edit')}
+                  variant={activeTab === 'edit' ? 'primary' : 'secondary'}
+                  className="gap-2"
+                  id="edit-button"
+                  aria-label={t('page_edit_quotation')}
+                >
+                  <i className="fa-solid fa-pen-to-square"></i>
+                  {t('page_edit_quotation')}
+                </Button>
+                <Button
+                  onClick={() => handleTabChange('preview')}
+                  variant={activeTab === 'preview' ? 'primary' : 'secondary'}
+                  className="gap-2"
+                  id="preview-button"
+                  aria-label={t('page_preview_quotation')}
+                >
+                  <i className="fa-solid fa-eye"></i>
+                  {t('page_preview_quotation')}
+                </Button>
+              </div>
+              <LanguageSwitcher />
             </div>
             <div className="flex sm:hidden">
               <select
                 className="block w-32 rounded-md border border-gray-300 bg-white py-2 p-2 text-sm text-gray-900 focus:border-blue-700 focus:ring-2 focus:ring-blue-700 focus:outline-none"
                 value={activeTab}
                 onChange={(e) => setActiveTab(e.target.value as EDIT_TYPES)}
-                aria-label="切換頁籤"
+                aria-label={t('page_tab_switch')}
               >
-                <option value="edit">編輯報價單</option>
-                <option value="preview">預覽報價單</option>
+                <option value="edit">{t('page_edit_quotation')}</option>
+                <option value="preview">{t('page_preview_quotation')}</option>
               </select>
             </div>
           </div>
@@ -106,7 +111,7 @@ export default function Home() {
             <Button
               className="fixed bottom-16 left-8  xl:hidden"
               variant="primary"
-              aria-label="查看匯出紀錄"
+              aria-label={t('page_view_export_history')}
               onClick={() => setShowHistory(true)}
             >
               <i className="fa-solid fa-clock-rotate-left text-sm"></i>
@@ -136,9 +141,11 @@ export default function Home() {
       </div>
 
       <footer className="sticky bottom-0 z-10 w-full space-x-2 bg-white py-4 text-center text-xs text-gray-700">
-        <span>&copy; {dayjs().year()} Quotation App For. All rights reserved.</span>
+        <span>
+          &copy; {dayjs().year()} {t('page_footer_copyright')}
+        </span>
         <span className="mt-2 text-xs text-gray-700">
-          All Icons by&nbsp;
+          {t('page_footer_icons_by')}
           <a
             href="https://www.flaticon.com/"
             title="Flaticon"
@@ -159,7 +166,9 @@ export default function Home() {
             fontawesome
           </a>
         </span>
-        <span>| version : {version}</span>
+        <span>
+          | {t('page_footer_version')} : {version}
+        </span>
       </footer>
     </div>
   );
