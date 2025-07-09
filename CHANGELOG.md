@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.4.0](https://github.com/nick-jy-huang/quotation-app/compare/v0.3.0...v0.4.0) (2025-07-09)
+
+
+### Features
+
+* toast ([803e265](https://github.com/nick-jy-huang/quotation-app/commit/803e26540fc66dbed5f7a53606d2168155a6632b))
+
+
+### Bug Fixes
+
+* .prettierrc plugin ([cdbd42c](https://github.com/nick-jy-huang/quotation-app/commit/cdbd42ca94ca96198c0bbdbaafad0b05ffd2e028))
+* delay loading ([cd65266](https://github.com/nick-jy-huang/quotation-app/commit/cd652664d87839426de20d04f89ce58740e9b0ec))
+* scroll bar default display ([eeacab7](https://github.com/nick-jy-huang/quotation-app/commit/eeacab7943626588d4c86a77bc386938d9f8980d))
+* test files ([b96560b](https://github.com/nick-jy-huang/quotation-app/commit/b96560be0ac3a313257b356e24a3268f3becda25))
+
 ## [0.3.0](https://github.com/nick-jy-huang/quotation-app/compare/v0.2.5...v0.3.0) (2025-07-09)
 
 ### Features
