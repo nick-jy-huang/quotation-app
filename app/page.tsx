@@ -12,6 +12,7 @@ import { useQuotationStore } from '@/stores/quotationStore';
 import { QuotationData } from '@/types/quotation';
 import { handleSaveLocaleStorage } from '@/utils/saveLocaleStorage';
 import QuotationHistoryModal from '@/components/QuotationHistoryList/Modal';
+import { version } from '../package.json';
 
 type EDIT_TYPES = 'edit' | 'preview';
 
@@ -158,6 +159,7 @@ export default function Home() {
             fontawesome
           </a>
         </span>
+        <span>| version : {version}</span>
       </footer>
     </div>
   );
