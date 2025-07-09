@@ -1,22 +1,24 @@
 import { CompanyInfoProps } from './types';
 import Input from '@/components/prototype/Input';
+import { useTranslations } from 'next-intl';
 
 export default function CompanyInfo({ quotation, updateQuotation }: CompanyInfoProps) {
+  const t = useTranslations();
   return (
     <div>
-      <h3 className="mb-2 text-lg font-semibold text-gray-700">接案人資訊</h3>
+      <h3 className="mb-2 text-lg font-semibold text-gray-700">{t('companyinfo_title')}</h3>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Input
-          label="接案人"
+          label={t('input_label_freelancer')}
           value={quotation.freelancer}
-          placeholder="請輸入接案人..."
+          placeholder={t('input_placeholder_freelancer')}
           onChange={(value) => updateQuotation('freelancer', value)}
         />
         <Input
-          label="信箱"
+          label={t('input_label_email')}
           type="email"
           value={quotation.companyEmail}
-          placeholder="請輸入信箱..."
+          placeholder={t('input_placeholder_email')}
           onChange={(value) => updateQuotation('companyEmail', value)}
         />
       </div>

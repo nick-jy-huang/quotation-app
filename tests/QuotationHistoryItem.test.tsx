@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import QuotationHistoryItem from '@/components/QuotationHistoryList/QuotationHistoryItem';
 describe('QuotationHistoryItem', () => {
@@ -41,12 +42,12 @@ describe('QuotationHistoryItem', () => {
     },
   ];
   it('renders history items', () => {
-    render(<QuotationHistoryItem quotationHistory={history} onLoad={() => {}} />);
+    renderWithIntl(<QuotationHistoryItem quotationHistory={history} onLoad={() => {}} />);
     expect(screen.getAllByText('- -').length).toBe(history.length);
   });
   it('calls onLoad when item clicked', async () => {
     const onLoad = vi.fn();
-    render(<QuotationHistoryItem quotationHistory={history} onLoad={onLoad} />);
+    renderWithIntl(<QuotationHistoryItem quotationHistory={history} onLoad={onLoad} />);
     const buttons = screen.getAllByLabelText('載入匯出紀錄');
     await userEvent.click(buttons[0]);
     expect(onLoad).toHaveBeenCalled();

@@ -1,16 +1,20 @@
+import { useTranslations } from 'next-intl';
+
 const notes = [
-  '額外支援和維護需另開報價單。',
-  '如途中有重大需求改變時，時程須另外計算。',
-  '確定開案日期後，需先支付報價 30% 訂金。',
-  '剩餘尾款在第一次驗收時要結清或是拆次匯款需在合約上註明。',
+  'quotationnotes_note1',
+  'quotationnotes_note2',
+  'quotationnotes_note3',
+  'quotationnotes_note4',
 ];
 
 export default function QuotationNotes() {
+  const t = useTranslations();
+
   return (
     <div className="space-y-1 divide-gray-200 text-xs text-gray-600 pt-2">
       {notes.map((note, idx) => (
         <p key={idx}>
-          {idx + 1}. {note}
+          {idx + 1}. {t(note)}
         </p>
       ))}
     </div>

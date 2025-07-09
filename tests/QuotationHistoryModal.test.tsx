@@ -1,9 +1,10 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import QuotationHistoryModal from '@/components/QuotationHistoryList/Modal';
 describe('QuotationHistoryModal', () => {
   it('renders children when open', () => {
-    render(
+    renderWithIntl(
       <QuotationHistoryModal open={true} onClose={() => {}}>
         <div>modal content</div>
       </QuotationHistoryModal>,
@@ -11,7 +12,7 @@ describe('QuotationHistoryModal', () => {
     expect(screen.getByText('modal content')).toBeInTheDocument();
   });
   it('renders nothing when closed', () => {
-    render(
+    renderWithIntl(
       <QuotationHistoryModal open={false} onClose={() => {}}>
         <div>modal content</div>
       </QuotationHistoryModal>,
@@ -20,7 +21,7 @@ describe('QuotationHistoryModal', () => {
   });
   it('calls onClose when ESC is pressed', async () => {
     const onClose = vi.fn();
-    render(
+    renderWithIntl(
       <QuotationHistoryModal open={true} onClose={onClose}>
         <button>focus me</button>
       </QuotationHistoryModal>,
@@ -30,7 +31,7 @@ describe('QuotationHistoryModal', () => {
   });
   it('calls onClose when clicking backdrop', () => {
     const onClose = vi.fn();
-    const { container } = render(
+    const { container } = renderWithIntl(
       <QuotationHistoryModal open={true} onClose={onClose}>
         <div>modal content</div>
       </QuotationHistoryModal>,
@@ -44,7 +45,7 @@ describe('QuotationHistoryModal', () => {
     expect(onClose).toHaveBeenCalled();
   });
   it('traps focus within modal when tabbing', async () => {
-    render(
+    renderWithIntl(
       <QuotationHistoryModal open={true} onClose={() => {}}>
         <button>first</button>
         <button>second</button>

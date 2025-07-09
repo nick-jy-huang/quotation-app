@@ -12,8 +12,10 @@ import jsPDF from 'jspdf';
 import Button from '@/components/prototype/Button';
 import dayjs from 'dayjs';
 import { handleSaveExportPDFToLocal, handleGetLocaleStorage } from '@/utils/saveLocaleStorage';
+import { useTranslations } from 'next-intl';
 
 export default function QuotationPreview() {
+  const t = useTranslations();
   const {
     quotation: {
       freelancer,
@@ -82,14 +84,14 @@ export default function QuotationPreview() {
           onClick={handleExportPDF}
           variant="warning"
           className="fixed bottom-18 right-8 w-auto xl:hidden gap-2"
-          aria-label="匯出 PDF"
+          aria-label={t('quotationpreview_export_pdf')}
         >
           <i className="fa-solid fa-download"></i>
         </Button>
 
-        <div className="hidden xl:block xl:absolute xl:top-0 xl:right-[-14%]">
+        <div className="hidden xl:block xl:absolute xl:top-0 xl:right-[-16%]">
           <Button onClick={handleExportPDF} variant="warning" className="gap-2">
-            <i className="fa-solid fa-download"></i> 匯出 PDF
+            <i className="fa-solid fa-download"></i> {t('quotationpreview_export_pdf')}
           </Button>
         </div>
       </div>
@@ -112,26 +114,34 @@ export default function QuotationPreview() {
 
         {mainWorkContent && (
           <div className="mb-4">
-            <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">主要工作內容</h3>
+            <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">
+              {t('quotationpreview_mainworkcontent')}
+            </h3>
             <p className="whitespace-pre-wrap text-gray-700">{mainWorkContent}</p>
           </div>
         )}
 
         {techStack && (
           <div className="mb-4">
-            <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">技術要求</h3>
+            <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">
+              {t('quotationpreview_techstack')}
+            </h3>
             <p className="whitespace-pre-wrap text-gray-700">{techStack}</p>
           </div>
         )}
 
         <div className="mb-4">
-          <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">收費項目</h3>
+          <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">
+            {t('quotationpreview_chargeitems')}
+          </h3>
           <ItemTable items={items} />
         </div>
 
         {notes && (
           <div className="mb-3">
-            <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">備註</h3>
+            <h3 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">
+              {t('quotationpreview_notes')}
+            </h3>
             <p className="whitespace-pre-wrap text-gray-700">{notes}</p>
           </div>
         )}
@@ -148,7 +158,7 @@ export default function QuotationPreview() {
         </div>
 
         <div className="mt-4 border-t pt-6 text-center text-sm text-gray-700">
-          <p>如有任何問題，歡迎隨時聯繫。</p>
+          <p>{t('quotationpreview_contacthint')}</p>
         </div>
       </div>
     </div>

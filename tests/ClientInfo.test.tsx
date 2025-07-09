@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ClientInfo from '@/components/QuotationForm/ClientInfo';
 import React from 'react';
@@ -11,7 +12,7 @@ describe('ClientInfo', () => {
     customerAddress: '台北市',
   };
   it('renders all input fields', () => {
-    render(<ClientInfo quotation={baseQuotation} updateQuotation={vi.fn()} />);
+    renderWithIntl(<ClientInfo quotation={baseQuotation} updateQuotation={vi.fn()} />);
     expect(screen.getByLabelText('名稱')).toBeInTheDocument();
     expect(screen.getByLabelText('電話')).toBeInTheDocument();
     expect(screen.getByLabelText('信箱')).toBeInTheDocument();
@@ -20,7 +21,7 @@ describe('ClientInfo', () => {
 
   it('calls updateQuotation when input changes', async () => {
     const updateQuotation = vi.fn();
-    render(<ClientInfo quotation={baseQuotation} updateQuotation={updateQuotation} />);
+    renderWithIntl(<ClientInfo quotation={baseQuotation} updateQuotation={updateQuotation} />);
     const nameInput = screen.getByLabelText('名稱');
     await userEvent.clear(nameInput);
     await userEvent.type(nameInput, '客戶B');

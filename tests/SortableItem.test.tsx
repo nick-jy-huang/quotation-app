@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SortableItem from '@/components/QuotationForm/ItemList/SortableItem';
 import React from 'react';
@@ -6,7 +7,7 @@ import React from 'react';
 describe('SortableItem', () => {
   const item = { id: '1', name: '項目A', hourlyRate: 100, hours: 2, total: 200 };
   it('renders all input fields', () => {
-    render(
+    renderWithIntl(
       <SortableItem
         item={item}
         index={0}
@@ -23,7 +24,7 @@ describe('SortableItem', () => {
 
   it('calls updateItem when input changes', async () => {
     const updateItem = vi.fn();
-    render(
+    renderWithIntl(
       <SortableItem
         item={item}
         index={0}
@@ -41,7 +42,7 @@ describe('SortableItem', () => {
 
   it('calls removeItem when 刪除 clicked', async () => {
     const removeItem = vi.fn();
-    render(
+    renderWithIntl(
       <SortableItem
         item={item}
         index={0}

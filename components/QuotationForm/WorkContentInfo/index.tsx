@@ -1,5 +1,6 @@
 import Textarea from '@/components/prototype/Textarea';
 import { WorkContentInfoProps } from './types';
+import { useTranslations } from 'next-intl';
 
 export default function WorkContentInfo({
   mainWorkContent,
@@ -7,20 +8,21 @@ export default function WorkContentInfo({
   onMainWorkContentChange,
   onTechStackChange,
 }: WorkContentInfoProps) {
+  const t = useTranslations();
   return (
     <div>
-      <h3 className="mb-2 text-lg font-semibold text-gray-700">工作內容</h3>
+      <h3 className="mb-2 text-lg font-semibold text-gray-700">{t('workcontentinfo_title')}</h3>
       <Textarea
-        label="主要工作內容"
+        label={t('workcontentinfo_label_main')}
         value={mainWorkContent}
         onChange={onMainWorkContentChange}
-        placeholder="請輸入主要工作內容..."
+        placeholder={t('workcontentinfo_placeholder_main')}
       />
       <Textarea
-        label="技術要求"
+        label={t('workcontentinfo_label_tech')}
         value={techStack}
         onChange={onTechStackChange}
-        placeholder="請輸入技術要求..."
+        placeholder={t('workcontentinfo_placeholder_tech')}
       />
     </div>
   );

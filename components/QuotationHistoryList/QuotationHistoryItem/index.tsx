@@ -1,8 +1,10 @@
 import Button from '@/components/prototype/Button';
+import { useTranslations } from 'next-intl';
 
 import { QuotationItemProps } from './types';
 
 export default function QuotationHistoryItem({ quotationHistory, onLoad }: QuotationItemProps) {
+  const t = useTranslations();
   return quotationHistory.map((history, index) => {
     const name = history.fileName || '- -';
     const displayName = name.length > 20 ? name.slice(0, 16) + '...' : name;
@@ -22,7 +24,7 @@ export default function QuotationHistoryItem({ quotationHistory, onLoad }: Quota
           onClick={() => onLoad(history)}
           variant="ghost"
           size="sm"
-          aria-label="載入匯出紀錄"
+          aria-label={t('quotationhistoryitem_load_exported_history')}
         >
           <i className="fa-solid fa-file-export text-gray-500 hover:text-gray-600"></i>
         </Button>

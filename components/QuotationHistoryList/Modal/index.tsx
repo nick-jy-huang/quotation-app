@@ -1,12 +1,14 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { QuotationHistoryModalProps } from './types';
 import Button from '@/components/prototype/Button';
+import { useTranslations } from 'next-intl';
 
 export default function QuotationHistoryModal({
   open,
   onClose,
   children,
 }: QuotationHistoryModalProps) {
+  const t = useTranslations();
   const modalRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -75,14 +77,14 @@ export default function QuotationHistoryModal({
       >
         <Button
           className="absolute top-1 right-0 text-gray-500 hover:text-gray-700"
-          aria-label="關閉"
+          aria-label={t('quotationhistorylist_modal_close')}
           variant="ghost"
           onClick={onClose}
         >
           <i className="fa-solid fa-xmark text-sm"></i>
         </Button>
         <h2 id="quotation-history-modal-title" className="sr-only">
-          匯出紀錄
+          {t('quotationhistorylist_modal_title')}
         </h2>
         <div className="mt-8">{children}</div>
       </div>

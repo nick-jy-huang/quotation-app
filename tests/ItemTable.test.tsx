@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen } from '@testing-library/react';
 import ItemTable from '@/components/QuotationPreview/ItemTable';
 describe('ItemTable', () => {
   const items = [
@@ -6,7 +7,7 @@ describe('ItemTable', () => {
     { id: '2', name: '項目B', hourlyRate: 200, hours: 1 },
   ];
   it('renders table and items', () => {
-    render(<ItemTable items={items} />);
+    renderWithIntl(<ItemTable items={items} />);
     expect(screen.getByText('項目')).toBeInTheDocument();
     expect(screen.getByText('小計')).toBeInTheDocument();
     expect(screen.getByText('項目A')).toBeInTheDocument();

@@ -18,6 +18,7 @@ export default defineConfig({
         'vite.config.ts',
         '.next/**',
         'axe.ts',
+        'i18n/**',
       ],
     },
   },

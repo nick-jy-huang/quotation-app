@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import QuotationPreview from '@/components/QuotationPreview';
 
@@ -62,7 +63,7 @@ vi.mock('@/stores/quotationStore', () => {
 
 describe('QuotationPreview', () => {
   it('renders all main sections', () => {
-    render(<QuotationPreview />);
+    renderWithIntl(<QuotationPreview />);
     expect(screen.getByText('報價單')).toBeInTheDocument();
     expect(screen.getByText('客戶資訊')).toBeInTheDocument();
     expect(screen.getByText('收費項目')).toBeInTheDocument();
@@ -75,7 +76,7 @@ describe('QuotationPreview', () => {
   it('calls export PDF and saves history when button clicked', async () => {
     const { _saveMock } = (await import('@/utils/saveLocaleStorage')) as any;
     const { _setHistoryMock } = (await import('@/stores/quotationStore')) as any;
-    render(<QuotationPreview />);
+    renderWithIntl(<QuotationPreview />);
     const btn = screen.getAllByLabelText('匯出 PDF')[0];
     await userEvent.click(btn);
     expect(_saveMock).toHaveBeenCalled();
@@ -85,7 +86,7 @@ describe('QuotationPreview', () => {
   it('calls pdf.addPage when exporting PDF', async () => {
     const jsPDFModule = (await import('jspdf')) as any;
     const addPageMock = jsPDFModule.default().addPage;
-    render(<QuotationPreview />);
+    renderWithIntl(<QuotationPreview />);
     const btn = screen.getAllByLabelText('匯出 PDF')[0];
     await userEvent.click(btn);
     expect(addPageMock).toBeDefined();
