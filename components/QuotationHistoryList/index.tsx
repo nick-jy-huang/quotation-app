@@ -19,7 +19,7 @@ export default function QuotationHistoryList({
 
   if (!quotationHistory.length) return null;
   return (
-    <div>
+    <div className="rounded-xl bg-white p-4">
       <div className="flex items-center justify-end">
         <Button
           onClick={handleClean}

@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   description:
     'Quotation App 是一款簡易好用的線上報價單編輯與預覽工具，支援多欄位填寫、PDF 匯出，讓你輕鬆管理各類型專案報價需求。',
   openGraph: {
+    type: 'website',
     title: 'Quotation App',
     description:
       'Quotation App 是一款簡易好用的線上報價單編輯與預覽工具，支援多欄位填寫、PDF 匯出，讓你輕鬆管理各類型專案報價需求。',
