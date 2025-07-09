@@ -5,12 +5,16 @@ import { ReactElement } from 'react';
 
 export function renderWithIntl(
   ui: ReactElement,
-  { locale = 'zh-TW', messages = zhMessages, ...options }: { locale?: string; messages?: any } & RenderOptions = {}
+  {
+    locale = 'zh-TW',
+    messages = zhMessages,
+    ...options
+  }: { locale?: string; messages?: any } & RenderOptions = {},
 ) {
   return render(
     <NextIntlClientProvider locale={locale} messages={messages}>
       {ui}
     </NextIntlClientProvider>,
-    options
+    options,
   );
-} 
+}

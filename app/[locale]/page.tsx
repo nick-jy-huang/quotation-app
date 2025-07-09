@@ -57,13 +57,13 @@ export default function Home() {
   };
 
   return (
-    <div className="flex h-screen flex-col ">
+    <div className="flex h-screen flex-col">
       <header className="z-10 flex-shrink-0 bg-white shadow-sm">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-4">
             <div className="flex gap-4">
               <img src="/favicon.png" alt="logo" className="h-8 w-8" />
-              <h1 className="text-2xl font-bold text-gray-900 hidden lg:block">Quotation App</h1>
+              <h1 className="hidden text-2xl font-bold text-gray-900 lg:block">Quotation App</h1>
             </div>
 
             <div id="desktop-tab-switcher" className="flex items-center gap-2">
@@ -92,10 +92,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div id="mobile-tab-switcher" className="flex sm:hidden gap-2">
+            <div id="mobile-tab-switcher" className="flex gap-2 sm:hidden">
               <div className="relative">
                 <select
-                  className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer"
+                  className="ease w-full cursor-pointer appearance-none rounded border border-slate-200 bg-transparent py-2 pr-8 pl-3 text-sm text-slate-700 shadow-sm transition duration-300 placeholder:text-slate-400 hover:border-slate-400 focus:border-slate-400 focus:shadow-md focus:outline-none"
                   value={activeTab}
                   onChange={(e) => setActiveTab(e.target.value as EDIT_TYPES)}
                   aria-label={t('page_tab_switch')}
@@ -103,7 +103,7 @@ export default function Home() {
                   <option value="edit">{t('page_edit_quotation')}</option>
                   <option value="preview">{t('page_preview_quotation')}</option>
                 </select>
-                <i className="absolute right-3 top-1/2 transform -translate-y-1/2 fa-solid fa-caret-down"></i>
+                <i className="fa-solid fa-caret-down absolute top-1/2 right-3 -translate-y-1/2 transform"></i>
               </div>
 
               <LanguageSwitcher />
@@ -116,7 +116,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           {quotationHistory.length > 0 && (
             <Button
-              className="fixed bottom-16 left-8  xl:hidden"
+              className="fixed bottom-16 left-8 xl:hidden"
               variant="primary"
               aria-label={t('page_view_export_history')}
               onClick={() => setShowHistory(true)}
@@ -126,7 +126,7 @@ export default function Home() {
           )}
 
           <div className="relative">
-            <div className="hidden xl:block absolute top-2 left-[-4%]">
+            <div className="absolute top-2 left-[-4%] hidden xl:block">
               <QuotationHistoryList
                 quotationHistory={quotationHistory}
                 onClear={handleClearQuotationHistory}

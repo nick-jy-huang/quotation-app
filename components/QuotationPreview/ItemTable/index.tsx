@@ -35,7 +35,9 @@ export default function ItemTable({ items }: ItemTableProps) {
         <tbody>
           {itemsWithTotal.map((item, index) => (
             <tr key={item.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-              <td className="border border-gray-300 px-2 py-1 text-xs">{item.name || t('common_not_filled')}</td>
+              <td className="border border-gray-300 px-2 py-1 text-xs">
+                {item.name || t('common_not_filled')}
+              </td>
               <td className="border border-gray-300 px-2 py-1 text-right text-xs">
                 {toThousand(item.total)}
               </td>

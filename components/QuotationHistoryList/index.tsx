@@ -19,7 +19,7 @@ export default function QuotationHistoryList({
       </div>
       <div className="divide-y divide-gray-300">
         <div>
-          <span className="text-gray-600 text-xs">{t('quotationhistorylist_exporthistory')}</span>
+          <span className="text-xs text-gray-600">{t('quotationhistorylist_exporthistory')}</span>
         </div>
         <QuotationHistoryItem quotationHistory={quotationHistory} onLoad={onLoad} />
       </div>
