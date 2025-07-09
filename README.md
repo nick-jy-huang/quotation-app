@@ -21,7 +21,7 @@
 
 ## 技術架構
 
-- Next.js 13+
+- Next.js 15
 - React 18
 - TypeScript
 - Tailwind CSS
@@ -52,6 +52,33 @@ pnpm dev
 ```
 
 4. 開啟瀏覽器並前往 [http://localhost:3000](http://localhost:3000)
+
+## Node.js 版本需求
+
+本專案建議使用 Node.js 20 以上版本（Next.js 15 需 Node.js 18+，建議 20 以上）。
+
+## 測試
+
+本專案採用 Vitest + Testing Library 進行單元與元件測試，涵蓋主要元件、流程、無障礙、RWD、localStorage、副作用等情境。
+
+- 使用 [Vitest](https://vitest.dev/) 作為測試框架，支援 TypeScript 與 Vite 專案。
+- 使用 [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/) 進行元件渲染與互動測試。
+- 覆蓋率報表自動產生於 `coverage/` 目錄，可用瀏覽器開啟 `coverage/index.html` 查看詳細覆蓋情況。
+- 重要元件皆有 smoke test、props 傳遞、互動、無障礙、RWD 等測試案例。
+- PDF 匯出、localStorage 等副作用皆有 mock 處理，確保測試穩定。
+
+### 執行測試
+
+```bash
+pnpm test
+# 或
+pnpm vitest run --coverage
+```
+
+### 相關測試指令
+
+- `pnpm test`：執行所有單元測試
+- `pnpm vitest run --coverage`：執行測試並產生覆蓋率報表
 
 ## 授權
 
