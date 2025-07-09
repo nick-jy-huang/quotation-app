@@ -91,15 +91,19 @@ export default function Home() {
               </div>
             </div>
             <div className="flex sm:hidden gap-2">
-              <select
-                className="block w-32 rounded-md border border-gray-300 bg-white py-2 p-2 text-sm text-gray-900 focus:border-blue-700 focus:ring-2 focus:ring-blue-700 focus:outline-none"
-                value={activeTab}
-                onChange={(e) => setActiveTab(e.target.value as EDIT_TYPES)}
-                aria-label={t('page_tab_switch')}
-              >
-                <option value="edit">{t('page_edit_quotation')}</option>
-                <option value="preview">{t('page_preview_quotation')}</option>
-              </select>
+              <div className="relative">
+                <select
+                  className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer"
+                  value={activeTab}
+                  onChange={(e) => setActiveTab(e.target.value as EDIT_TYPES)}
+                  aria-label={t('page_tab_switch')}
+                >
+                  <option value="edit">{t('page_edit_quotation')}</option>
+                  <option value="preview">{t('page_preview_quotation')}</option>
+                </select>
+                <i className="absolute right-3 top-1/2 transform -translate-y-1/2 fa-solid fa-caret-down"></i>
+              </div>
+
               <LanguageSwitcher />
             </div>
           </div>
