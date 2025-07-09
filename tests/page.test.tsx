@@ -4,6 +4,8 @@ import userEvent from '@testing-library/user-event';
 import Home from '@/app/[locale]/page';
 import { vi } from 'vitest';
 
+window.confirm = vi.fn(() => true);
+
 vi.mock('next/navigation', () => ({
   useRouter: () => ({
     push: vi.fn(),

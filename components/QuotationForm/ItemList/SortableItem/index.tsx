@@ -69,8 +69,14 @@ export default function SortableItem({
         <div className="text-mx flex items-center justify-end pt-6 text-right font-medium text-gray-700">
           <div className="pr-4 text-xs">{toThousand(item.total)}</div>
           {itemsLength > 1 && (
-            <Button onClick={() => removeItem(item.id)} variant="ghost" size="sm" aria-label={t('sortableitem_remove')}>
-              <i className="fa-solid fa-trash text-red-500"></i>
+            <Button
+              onClick={() => removeItem(item.id)}
+              variant="ghost"
+              size="sm"
+              aria-label={t('sortableitem_remove')}
+              className="hover:text-red-600"
+            >
+              <i className="fa-solid fa-trash"></i>
             </Button>
           )}
           <DragHandle listeners={listeners} />

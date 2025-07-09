@@ -8,6 +8,7 @@
   "quotationpreview_notes": "Notes",
   "quotationpreview_contacthint": "If you have any questions, feel free to contact us.",
   "quotationpreview_title": "Quotation",
+  "quotationpreview_export_success": "Export successful",
   "quotationhistorylist_clearhistory": "Clear History",
   "quotationhistorylist_exporthistory": "Export History",
   "quotationhistorylist_modal_close": "Close",
@@ -71,5 +72,8 @@
   "page_footer_copyright": "Quotation App For. All rights reserved.",
   "page_footer_icons_by": "All Icons by ",
   "page_footer_version": "version",
-  "page_switch_language": "Switch language"
+  "page_switch_language": "Switch language",
+  "page_clear_history_success": "Export history cleared",
+  "page_load_quotation_success": "Quotation loaded",
+  "quotationhistorylist_clearhistory_confirm": "Are you sure you want to clear all export history?"
 }

@@ -11,7 +11,7 @@ export default function QuotationNotes() {
   const t = useTranslations();
 
   return (
-    <div className="space-y-1 divide-gray-200 text-xs text-gray-600 pt-2">
+    <div className="space-y-1 divide-gray-200 pt-2 text-xs text-gray-600">
       {notes.map((note, idx) => (
         <p key={idx}>
           {idx + 1}. {t(note)}

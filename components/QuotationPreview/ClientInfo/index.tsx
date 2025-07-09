@@ -9,7 +9,9 @@ export default function ClientInfo({
   const t = useTranslations();
   return (
     <div className="mb-4">
-      <h2 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">{t('clientinfo_title')}</h2>
+      <h2 className="mb-3 border-b pb-2 text-lg font-semibold text-gray-800">
+        {t('clientinfo_title')}
+      </h2>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
         <div>
           <p className="text-sm text-gray-600">{t('common_customer')}</p>

@@ -13,6 +13,7 @@ import Button from '@/components/prototype/Button';
 import dayjs from 'dayjs';
 import { handleSaveExportPDFToLocal, handleGetLocaleStorage } from '@/utils/saveLocaleStorage';
 import { useTranslations } from 'next-intl';
+import toast from 'react-hot-toast';
 
 export default function QuotationPreview() {
   const t = useTranslations();
@@ -75,6 +76,8 @@ export default function QuotationPreview() {
 
     const updatedHistory = handleGetLocaleStorage('quotation_history') || [];
     setQuotationHistory(updatedHistory);
+
+    toast.success(t('quotationpreview_export_success'));
   };
 
   return (
@@ -83,13 +86,13 @@ export default function QuotationPreview() {
         <Button
           onClick={handleExportPDF}
           variant="warning"
-          className="fixed bottom-18 right-8 w-auto xl:hidden gap-2"
+          className="fixed right-8 bottom-18 w-auto gap-2 xl:hidden"
           aria-label={t('quotationpreview_export_pdf')}
         >
           <i className="fa-solid fa-download"></i>
         </Button>
 
-        <div className="hidden xl:block xl:absolute xl:top-0 xl:right-[-16%]">
+        <div className="hidden xl:absolute xl:top-0 xl:right-[-16%] xl:block">
           <Button onClick={handleExportPDF} variant="warning" className="gap-2">
             <i className="fa-solid fa-download"></i> {t('quotationpreview_export_pdf')}
           </Button>

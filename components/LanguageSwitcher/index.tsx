@@ -21,7 +21,7 @@ export default function LanguageSwitcher() {
   return (
     <Button
       onClick={handleLocaleSwitch}
-      variant="warning"
+      variant="ghost"
       className="gap-1"
       aria-label={t('page_switch_language')}
     >

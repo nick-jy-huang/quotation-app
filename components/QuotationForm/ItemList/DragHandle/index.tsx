@@ -6,7 +6,7 @@ export default function DragHandle({ listeners }: { listeners: any }) {
     <span
       {...listeners}
       tabIndex={0}
-      className="ml-2 cursor-grab text-xs text-gray-700 select-none hover:text-gray-600"
+      className="ml-2 cursor-grab text-xs text-gray-400 select-none hover:text-gray-800"
       aria-label={t('draghandle_sort')}
       role="button"
     >

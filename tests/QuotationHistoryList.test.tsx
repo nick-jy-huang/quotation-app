@@ -2,6 +2,8 @@ import { renderWithIntl } from './test-utils';
 import { screen, fireEvent } from '@testing-library/react';
 import QuotationHistoryList from '@/components/QuotationHistoryList';
 
+window.confirm = vi.fn(() => true);
+
 describe('QuotationHistoryList', () => {
   const mockHistory = [
     {

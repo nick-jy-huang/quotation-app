@@ -70,7 +70,7 @@ export default function QuotationHistoryModal({
       tabIndex={-1}
     >
       <div
-        className="bg-white rounded-lg shadow-lg w-80 max-w-full p-4 relative"
+        className="relative w-80 max-w-full rounded-lg bg-white p-4 shadow-lg"
         ref={contentRef}
         tabIndex={-1}
         id="quotation-history-modal-desc"

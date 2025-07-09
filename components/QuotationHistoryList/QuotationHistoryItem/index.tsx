@@ -10,10 +10,10 @@ export default function QuotationHistoryItem({ quotationHistory, onLoad }: Quota
     const displayName = name.length > 20 ? name.slice(0, 16) + '...' : name;
     return (
       <div key={index} className="flex items-center justify-between py-1">
-        <i className="fa-solid fa-file text-gray-600 text-xs mr-1"></i>
+        <i className="fa-solid fa-file mr-1 text-xs text-gray-600"></i>
 
         <span
-          className="text-gray-600 text-xs max-w-[150px] inline-block align-middle overflow-hidden text-ellipsis whitespace-nowrap"
+          className="inline-block max-w-[140px] overflow-hidden align-middle text-xs text-ellipsis whitespace-nowrap text-gray-600"
           title={name}
         >
           {displayName}
@@ -25,8 +25,9 @@ export default function QuotationHistoryItem({ quotationHistory, onLoad }: Quota
           variant="ghost"
           size="sm"
           aria-label={t('quotationhistoryitem_load_exported_history')}
+          className="hover:text-blue-600"
         >
-          <i className="fa-solid fa-file-export text-gray-500 hover:text-gray-600"></i>
+          <i className="fa-solid fa-file-export"></i>
         </Button>
       </div>
     );
