@@ -6,10 +6,10 @@ on:
       - main
 
 jobs:
-  release-please:
+  release:
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/release-please-action@v4
+      - uses: googleapis/release-please-action@v4
         with:
           release-type: node
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -18,4 +18,4 @@ jobs:
               {"type":"feat","section":"🚀 Features","hidden":false},
               {"type":"fix","section":"🐛 Bug Fixes","hidden":false},
               {"type":"chore","section":"🧹 Chores","hidden":false}
-            ] 
+            ]
