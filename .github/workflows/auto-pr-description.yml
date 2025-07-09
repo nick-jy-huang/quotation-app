@@ -1,0 +1,18 @@
+name: Auto Update PR Description
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  update-pr-description:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update PR Description with Commits
+        uses: akashdhruv/pull-request-description@v2.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit_mode: true
+          commit_mode_title: "📝 Commits in this PR" 
