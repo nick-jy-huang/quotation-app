@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen } from '@testing-library/react';
 import QuotationNotes from '@/components/QuotationPreview/QuotationNotes';
 describe('QuotationNotes', () => {
   it('renders notes list', () => {
-    render(<QuotationNotes />);
+    renderWithIntl(<QuotationNotes />);
     expect(screen.getByText(/額外支援和維護/)).toBeInTheDocument();
   });
 });

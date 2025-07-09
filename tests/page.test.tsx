@@ -1,6 +1,17 @@
-import { render, screen } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Home from '@/app/page';
+import Home from '@/app/[locale]/page';
+import { vi } from 'vitest';
+
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: vi.fn(),
+    replace: vi.fn(),
+    prefetch: vi.fn(),
+  }),
+  usePathname: () => '/zh-TW',
+}));
 
 const setQuotationHistory = vi.fn();
 const updateQuotation = vi.fn();
@@ -61,14 +72,14 @@ vi.mock('@/utils/saveLocaleStorage', async (importOriginal) => {
 
 describe('Home page', () => {
   it('renders title, logo, and footer', () => {
-    render(<Home />);
+    renderWithIntl(<Home />);
     expect(screen.getByText('Quotation App')).toBeInTheDocument();
     expect(screen.getByAltText('logo')).toBeInTheDocument();
-    expect(screen.getByText(/All Icons by/)).toBeInTheDocument();
+    expect(screen.getByText(/所有圖示來源/)).toBeInTheDocument();
   });
 
   it('switches tab when button clicked', async () => {
-    render(<Home />);
+    renderWithIntl(<Home />);
     const previewBtn = screen.getByRole('button', { name: '預覽報價單' });
     await userEvent.click(previewBtn);
     expect(previewBtn).toHaveClass('bg-blue-700');
@@ -78,7 +89,7 @@ describe('Home page', () => {
   });
 
   it('shows and closes history modal', async () => {
-    render(<Home />);
+    renderWithIntl(<Home />);
     const openBtn = screen.getByLabelText('查看匯出紀錄');
     await userEvent.click(openBtn);
     expect(screen.getAllByText('匯出歷史')[0]).toBeInTheDocument();
@@ -88,7 +99,7 @@ describe('Home page', () => {
   });
 
   it('calls setQuotationHistory when clear history', async () => {
-    render(<Home />);
+    renderWithIntl(<Home />);
     const openBtn = screen.getByLabelText('查看匯出紀錄');
     await userEvent.click(openBtn);
     const clearBtns = screen.getAllByText('清空歷史');
@@ -97,7 +108,7 @@ describe('Home page', () => {
   });
 
   it('calls updateQuotation when load history', async () => {
-    render(<Home />);
+    renderWithIntl(<Home />);
     const openBtn = screen.getByLabelText('查看匯出紀錄');
     await userEvent.click(openBtn);
     const loadBtns = screen.getAllByLabelText('載入匯出紀錄');

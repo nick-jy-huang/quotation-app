@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import BaseInfo from '@/components/QuotationForm/BaseInfo';
 import React from 'react';
@@ -10,7 +11,7 @@ describe('BaseInfo', () => {
     validUntil: '2025-01-31',
   };
   it('renders all input fields', () => {
-    render(<BaseInfo quotation={baseQuotation} updateQuotation={vi.fn()} />);
+    renderWithIntl(<BaseInfo quotation={baseQuotation} updateQuotation={vi.fn()} />);
     expect(screen.getByLabelText('報價單編號')).toBeInTheDocument();
     expect(screen.getByLabelText('報價日期')).toBeInTheDocument();
     expect(screen.getByLabelText('有效期至')).toBeInTheDocument();
@@ -18,7 +19,7 @@ describe('BaseInfo', () => {
 
   it('calls updateQuotation when input changes', async () => {
     const updateQuotation = vi.fn();
-    render(<BaseInfo quotation={baseQuotation} updateQuotation={updateQuotation} />);
+    renderWithIntl(<BaseInfo quotation={baseQuotation} updateQuotation={updateQuotation} />);
     const idInput = screen.getByLabelText('報價單編號');
     await userEvent.clear(idInput);
     await userEvent.type(idInput, 'Q-002');

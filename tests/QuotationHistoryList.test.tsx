@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen, fireEvent } from '@testing-library/react';
 import QuotationHistoryList from '@/components/QuotationHistoryList';
 
 describe('QuotationHistoryList', () => {
@@ -26,14 +27,14 @@ describe('QuotationHistoryList', () => {
   ];
 
   it('does not render when history is empty', () => {
-    const { container } = render(
+    const { container } = renderWithIntl(
       <QuotationHistoryList quotationHistory={[]} onClear={vi.fn()} onLoad={vi.fn()} />,
     );
     expect(container).toBeEmptyDOMElement();
   });
 
   it('renders history and clear button', () => {
-    render(
+    renderWithIntl(
       <QuotationHistoryList quotationHistory={mockHistory} onClear={vi.fn()} onLoad={vi.fn()} />,
     );
     expect(screen.getByText('匯出歷史')).toBeInTheDocument();
@@ -43,7 +44,7 @@ describe('QuotationHistoryList', () => {
 
   it('calls onClear when clear button clicked', () => {
     const onClear = vi.fn();
-    render(
+    renderWithIntl(
       <QuotationHistoryList quotationHistory={mockHistory} onClear={onClear} onLoad={vi.fn()} />,
     );
     fireEvent.click(screen.getByText('清空歷史'));
@@ -52,7 +53,7 @@ describe('QuotationHistoryList', () => {
 
   it('calls onLoad when item load button clicked', () => {
     const onLoad = vi.fn();
-    render(
+    renderWithIntl(
       <QuotationHistoryList quotationHistory={mockHistory} onClear={vi.fn()} onLoad={onLoad} />,
     );
     fireEvent.click(screen.getByLabelText('載入匯出紀錄'));

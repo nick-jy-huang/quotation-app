@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen } from '@testing-library/react';
 import ClientInfo from '@/components/QuotationPreview/ClientInfo';
 describe('QuotationPreview/ClientInfo', () => {
   it('renders client info', () => {
-    render(
+    renderWithIntl(
       <ClientInfo
         customerName="客戶A"
         customerPhone="0912345678"

@@ -1,11 +1,12 @@
-import { render, screen } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import WorkContentInfo from '@/components/QuotationForm/WorkContentInfo';
 import React from 'react';
 
 describe('WorkContentInfo', () => {
   it('renders textarea fields', () => {
-    render(
+    renderWithIntl(
       <WorkContentInfo
         mainWorkContent="內容A"
         techStack="React"
@@ -19,7 +20,7 @@ describe('WorkContentInfo', () => {
 
   it('calls onMainWorkContentChange when textarea changes', async () => {
     const onMainWorkContentChange = vi.fn();
-    render(
+    renderWithIntl(
       <WorkContentInfo
         mainWorkContent="內容A"
         techStack="React"
@@ -36,7 +37,7 @@ describe('WorkContentInfo', () => {
 
   it('calls onTechStackChange when textarea changes', async () => {
     const onTechStackChange = vi.fn();
-    render(
+    renderWithIntl(
       <WorkContentInfo
         mainWorkContent="內容A"
         techStack="React"

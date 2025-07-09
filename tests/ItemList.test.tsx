@@ -1,4 +1,5 @@
-import { render, screen, act } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ItemList from '@/components/QuotationForm/ItemList';
 import React from 'react';
@@ -10,7 +11,7 @@ describe('ItemList', () => {
   ];
 
   it('renders all items and input fields', () => {
-    render(
+    renderWithIntl(
       <ItemList
         items={baseItems}
         addItem={vi.fn()}
@@ -27,7 +28,7 @@ describe('ItemList', () => {
 
   it('calls addItem when add button clicked', async () => {
     const addItem = vi.fn();
-    render(
+    renderWithIntl(
       <ItemList
         items={baseItems}
         addItem={addItem}
@@ -58,7 +59,7 @@ describe('ItemList', () => {
         />
       );
     }
-    render(
+    renderWithIntl(
       <ControlledItemList
         addItem={vi.fn()}
         updateItem={updateItem}
@@ -75,7 +76,7 @@ describe('ItemList', () => {
 
   it('calls removeItem when remove button clicked', async () => {
     const removeItem = vi.fn();
-    render(
+    renderWithIntl(
       <ItemList
         items={baseItems}
         addItem={vi.fn()}
@@ -90,7 +91,7 @@ describe('ItemList', () => {
   });
 
   it('renders nothing for items input when items is empty', () => {
-    render(
+    renderWithIntl(
       <ItemList
         items={[]}
         addItem={vi.fn()}

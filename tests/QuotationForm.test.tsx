@@ -1,10 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { renderWithIntl } from './test-utils';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import QuotationForm from '@/components/QuotationForm';
 
 describe('QuotationForm', () => {
   it('renders main sections and title', () => {
-    render(<QuotationForm />);
+    renderWithIntl(<QuotationForm />);
     expect(screen.getByText('編輯報價單')).toBeInTheDocument();
     expect(screen.getByText('報價單信息')).toBeInTheDocument();
     expect(screen.getByText('接案人資訊')).toBeInTheDocument();
@@ -15,7 +16,7 @@ describe('QuotationForm', () => {
   });
 
   it('can add and remove item', async () => {
-    render(<QuotationForm />);
+    renderWithIntl(<QuotationForm />);
 
     const addBtn = screen.getByRole('button', { name: '新增' });
     await userEvent.click(addBtn);
@@ -29,7 +30,7 @@ describe('QuotationForm', () => {
   });
 
   it('can update customer name', async () => {
-    render(<QuotationForm />);
+    renderWithIntl(<QuotationForm />);
     const input = screen.getByLabelText('名稱');
     await userEvent.clear(input);
     await userEvent.type(input, '小明');
