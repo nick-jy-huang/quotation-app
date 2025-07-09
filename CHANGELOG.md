@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1](https://github.com/nick-jy-huang/quotation-app/compare/v0.4.0...v0.4.1) (2025-07-09)
+
+
+### Bug Fixes
+
+* og tag and export history display ([a61ad86](https://github.com/nick-jy-huang/quotation-app/commit/a61ad869ae04d5b954d00f093a0941d37061114b))
+* og tag and export history display ([ff8486a](https://github.com/nick-jy-huang/quotation-app/commit/ff8486a7c254a1907edfc3d601455e9cb64c3eef))
+
 ## [0.4.0](https://github.com/nick-jy-huang/quotation-app/compare/v0.3.0...v0.4.0) (2025-07-09)
 
 
