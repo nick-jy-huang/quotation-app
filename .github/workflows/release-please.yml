@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -12,10 +16,6 @@ jobs:
       - uses: googleapis/release-please-action@v4
         with:
           release-type: node
-          token: ${{ secrets.GITHUB_TOKEN }}
-          changelog-types: |
-            [
-              {"type":"feat","section":"🚀 Features","hidden":false},
-              {"type":"fix","section":"🐛 Bug Fixes","hidden":false},
-              {"type":"chore","section":"🧹 Chores","hidden":false}
-            ]
+          token: ${{ secrets.RELEASE_TOKEN }}
+          config-file: 'release-please-config.json'
+          skip-github-release: true
