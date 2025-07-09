@@ -4,8 +4,8 @@ import { toThousand } from '@/utils/toThousand';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import DragHandle from '@/components/QuotationForm/ItemList/DragHandle';
-
 import { SortableItemProps } from './types';
+import { useTranslations } from 'next-intl';
 
 export default function SortableItem({
   item,
@@ -14,6 +14,7 @@ export default function SortableItem({
   removeItem,
   itemsLength,
 }: SortableItemProps) {
+  const t = useTranslations();
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: item.id,
   });
@@ -37,38 +38,38 @@ export default function SortableItem({
       <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-5">
         <div className="md:col-span-2">
           <Input
-            label={`項目 ${index + 1}`}
+            label={t('sortableitem_label', { n: index + 1 })}
             value={item.name}
             size="sm"
-            placeholder="請輸入項目..."
+            placeholder={t('sortableitem_placeholder')}
             onChange={(value) => updateItem(item.id, 'name', value)}
             data-testid={`item-name-${index}`}
           />
         </div>
         <Input
-          label="時薪"
+          label={t('sortableitem_hourly_rate')}
           type="number"
           size="sm"
           step={1}
           min={0}
           value={item.hourlyRate}
-          placeholder="請輸入時薪..."
+          placeholder={t('sortableitem_hourly_rate_placeholder')}
           onChange={(value) => updateItem(item.id, 'hourlyRate', value)}
         />
         <Input
-          label="時數"
+          label={t('sortableitem_hours')}
           type="number"
           step={1}
           min={0}
           size="sm"
           value={item.hours}
-          placeholder="請輸入時數..."
+          placeholder={t('sortableitem_hours_placeholder')}
           onChange={(value) => updateItem(item.id, 'hours', value)}
         />
         <div className="text-mx flex items-center justify-end pt-6 text-right font-medium text-gray-700">
           <div className="pr-4 text-xs">{toThousand(item.total)}</div>
           {itemsLength > 1 && (
-            <Button onClick={() => removeItem(item.id)} variant="ghost" size="sm" aria-label="刪除">
+            <Button onClick={() => removeItem(item.id)} variant="ghost" size="sm" aria-label={t('sortableitem_remove')}>
               <i className="fa-solid fa-trash text-red-500"></i>
             </Button>
           )}
