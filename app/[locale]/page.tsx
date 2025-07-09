@@ -63,7 +63,7 @@ export default function Home() {
           <div className="flex items-center justify-between py-4">
             <div className="flex gap-4">
               <img src="/favicon.png" alt="logo" className="h-8 w-8" />
-              <h1 className="text-2xl font-bold text-gray-900">Quotation App</h1>
+              <h1 className="text-2xl font-bold text-gray-900 hidden lg:block">Quotation App</h1>
             </div>
             <div className="flex items-center gap-2">
               <div className="hidden space-x-4 sm:flex">
@@ -87,10 +87,10 @@ export default function Home() {
                   <i className="fa-solid fa-eye"></i>
                   {t('page_preview_quotation')}
                 </Button>
+                <LanguageSwitcher />
               </div>
-              <LanguageSwitcher />
             </div>
-            <div className="flex sm:hidden">
+            <div className="flex sm:hidden gap-2">
               <select
                 className="block w-32 rounded-md border border-gray-300 bg-white py-2 p-2 text-sm text-gray-900 focus:border-blue-700 focus:ring-2 focus:ring-blue-700 focus:outline-none"
                 value={activeTab}
@@ -100,6 +100,7 @@ export default function Home() {
                 <option value="edit">{t('page_edit_quotation')}</option>
                 <option value="preview">{t('page_preview_quotation')}</option>
               </select>
+              <LanguageSwitcher />
             </div>
           </div>
         </div>

@@ -18,10 +18,11 @@ export default function LanguageSwitcher() {
   return (
     <Button
       onClick={handleLocaleSwitch}
-      variant="ghost"
-      className="ml-2"
+      variant="warning"
+      className="gap-2"
       aria-label={t('page_switch_language')}
     >
+      <i className="fa-solid fa-language text-md"></i>
       {nextLocale === 'en-US' ? 'EN' : '中'}
     </Button>
   );
