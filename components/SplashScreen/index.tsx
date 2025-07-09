@@ -28,7 +28,7 @@ export default function SplashScreen() {
       className={`${styleClass} ${hide ? 'pointer-events-none -translate-y-full' : ''} `}
     >
       <div>
-        <img src="/favicon.png" alt="logo" className="mx-auto mb-4 h-16 w-16 animate-bounce" />
+        <img src="/favicon.png" alt="logo" className="mx-auto mb-8 h-20 w-20 animate-bounce" />
         <h2 className="mb-1 border-b border-gray-300 text-center text-lg font-bold text-gray-800">
           - Quotation App -
         </h2>

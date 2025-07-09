@@ -41,14 +41,18 @@ export default function QuotationForm() {
       <h2 className="text-3xl font-bold text-blue-600">{t('quotationform_edittitle')}</h2>
       <div className="space-y-4 pt-4">
         <BaseInfo quotation={quotation} updateQuotation={updateQuotation} />
+        <hr className="border-gray-200" />
         <CompanyInfo quotation={quotation} updateQuotation={updateQuotation} />
+        <hr className="border-gray-200" />
         <ClientInfo quotation={quotation} updateQuotation={updateQuotation} />
+        <hr className="border-gray-200" />
         <WorkContentInfo
           mainWorkContent={quotation.mainWorkContent}
           techStack={quotation.techStack}
           onMainWorkContentChange={(value) => updateQuotation('mainWorkContent', value)}
           onTechStackChange={(value) => updateQuotation('techStack', value)}
         />
+        <hr className="border-gray-200" />
         <ItemList
           items={quotation.items}
           addItem={addItem}
@@ -56,12 +60,14 @@ export default function QuotationForm() {
           removeItem={removeItem}
           reorderItems={reorderItems}
         />
+        <hr className="border-gray-200" />
         <Textarea
           label={t('quotationform_notes')}
           value={quotation.notes}
           onChange={(value) => updateQuotation('notes', value)}
           placeholder={t('quotationform_notesplaceholder')}
         />
+        <hr className="border-gray-200" />
         <TotalSection items={quotation.items} />
       </div>
     </div>

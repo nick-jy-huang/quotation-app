@@ -74,8 +74,9 @@ export default function SortableItem({
               variant="ghost"
               size="sm"
               aria-label={t('sortableitem_remove')}
+              className="hover:text-red-600"
             >
-              <i className="fa-solid fa-trash text-red-500"></i>
+              <i className="fa-solid fa-trash"></i>
             </Button>
           )}
           <DragHandle listeners={listeners} />

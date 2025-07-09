@@ -74,5 +74,6 @@
   "page_footer_version": "版本",
   "page_switch_language": "切換語言",
   "page_clear_history_success": "已清除匯出歷史",
-  "page_load_quotation_success": "已載入報價單"
+  "page_load_quotation_success": "已載入報價單",
+  "quotationhistorylist_clearhistory_confirm": "確定要清空所有匯出紀錄嗎？"
 }
