@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.3.0](https://github.com/nick-jy-huang/quotation-app/compare/v0.2.5...v0.3.0) (2025-07-09)
+
+
+### Features
+
+* i18n lang TW US ([ce3231f](https://github.com/nick-jy-huang/quotation-app/commit/ce3231fb02eea31afba715b74e32968dbfafbe97))
+* rewrite i18n component ([e3b3cd8](https://github.com/nick-jy-huang/quotation-app/commit/e3b3cd851972040654ebf2a5d90fcf71aaea2ae6))
+* set lang switcher button rwd ([aeaec1f](https://github.com/nick-jy-huang/quotation-app/commit/aeaec1fad6fb533899bd85d42e972b4b32cd406a))
+* update select tag ([3b1f9ba](https://github.com/nick-jy-huang/quotation-app/commit/3b1f9baed567485e03ee55b2752756563dde1a40))
+* version display ([84f917a](https://github.com/nick-jy-huang/quotation-app/commit/84f917ae2edfa70f0249cc0c792f535d02ed3a1e))
+
+
+### Bug Fixes
+
+* release file ([b824190](https://github.com/nick-jy-huang/quotation-app/commit/b8241906a0beef372d2658c3da6dfadec2744732))
+* test files with i18n ([a005975](https://github.com/nick-jy-huang/quotation-app/commit/a005975e9d0025f211b30f1fb3cf1caee618a5b2))
+
 ## [0.2.5](https://github.com/nick-jy-huang/quotation-app/compare/v0.2.4...v0.2.5) (2025-07-09)
 
 
