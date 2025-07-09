@@ -1,9 +1,7 @@
 import { defineRouting } from 'next-intl/routing';
-
-export const LOCALES = ['zh-TW', 'en-US'] as const;
-export const DEFAULT_LOCALE = 'zh-TW' as const;
+import { EN_US, ZH_TW } from '@/constants/locale';
 
 export const routing = defineRouting({
-  locales: LOCALES,
-  defaultLocale: DEFAULT_LOCALE,
+  locales: [EN_US, ZH_TW],
+  defaultLocale: ZH_TW,
 });

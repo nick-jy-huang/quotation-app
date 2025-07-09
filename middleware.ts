@@ -9,9 +9,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/((?!_next/static|robots.txt|sitemap.xml|favicon.png|image.png|api).*)',
-    '/',
-    '/(zh-TW|en-US)/:path*',
-  ],
+  matcher: ['/((?!_next/static|robots.txt|sitemap.xml|favicon.png|image.png|api).*)', '/'],
 };
