@@ -1,10 +1,14 @@
 <p align="center">
-  <img src="https://quotation-app-zeta.vercel.app/favicon.png" width="100" alt="Quotation App Logo">
+  <img src="https://quotation-app-zeta.vercel.app/favicon.png" width="120" alt="Quotation App Logo">
 </p>
 
 <h1 align="center">Quotation App</h1>
 
-一款簡單好用的線上報價單編輯與預覽工具，支援多欄位填寫、即時計算與美觀的預覽畫面，適合各類型專案報價需求。
+#### 一款簡單好用的線上報價單編輯與預覽工具，支援多欄位填寫、即時計算與美觀的預覽畫面，適合各類型專案報價需求。
+
+<p align="center">
+  <img src="https://quotation-app-zeta.vercel.app/image.png" width="90%"  alt="Quotation App Logo">
+</p>
 
 ## 特色功能
 
@@ -18,6 +22,7 @@
 - RWD 浮動匯出按鈕與匯出紀錄，手機／平板體驗佳
 - Prettier 程式碼格式化與 TypeScript 嚴謹型別
 - 元件結構清楚，易於維護與擴充
+- 多語系支援
 
 ## 技術架構
 
@@ -25,10 +30,20 @@
 - React 18
 - TypeScript
 - Tailwind CSS
+- next-intl
 - Zustand 狀態管理
 - dayjs 處理日期
 - html2canvas + jsPDF 匯出 PDF
 - axe-core 無障礙檢查
+
+## i18n 多語系支援
+
+- 支援中英文（zh-TW / en-US）介面切換
+- 語言切換按鈕可即時切換所有 UI 文字
+- 語系路由自動化，middleware 會根據支援語言自動產生白名單
+- 所有主要元件皆有多語系測試，確保不同語言下顯示正確
+- 新增語言只需於 `constants/locale.ts` 設定，無需手動調整 middleware
+- message 新增語系表
 
 ## 安裝與啟動
 
@@ -71,14 +86,11 @@ pnpm dev
 
 ```bash
 pnpm test
-# 或
-pnpm vitest run --coverage
 ```
 
 ### 相關測試指令
 
-- `pnpm test`：執行所有單元測試
-- `pnpm vitest run --coverage`：執行測試並產生覆蓋率報表
+- `pnpm test`：執行所有單元測試，執行測試並產生覆蓋率報表，**coverage** 資料夾中點擊 **index.html**
 
 ## 授權
 
