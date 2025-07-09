@@ -1,6 +1,6 @@
 {
   "name": "quotation-app",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
