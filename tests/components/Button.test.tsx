@@ -32,7 +32,7 @@ describe('Button', () => {
         <Button variant="warning">E</Button>
       </>,
     );
-    expect(screen.getByText('A')).toHaveClass('bg-blue-700');
+    expect(screen.getByText('A')).toHaveClass('bg-blue-600');
     expect(screen.getByText('B')).toHaveClass('bg-gray-200');
     expect(screen.getByText('C')).toHaveClass('bg-transparent');
     expect(screen.getByText('D')).toHaveClass('bg-red-500');
