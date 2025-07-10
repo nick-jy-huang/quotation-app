@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.0](https://github.com/nick-jy-huang/quotation-app/compare/v0.5.0...v0.6.0) (2025-07-10)
+
+
+### Features
+
+* update README.md ([39918e1](https://github.com/nick-jy-huang/quotation-app/commit/39918e1996713d9f4d3d3cd52c6ccb5d28600c24))
+* update README.md ([0e698e4](https://github.com/nick-jy-huang/quotation-app/commit/0e698e43ca4301178557430dfa9deb0e2abf94b5))
+
+
+### Bug Fixes
+
+* layout cleanup ([b12ac04](https://github.com/nick-jy-huang/quotation-app/commit/b12ac0420f059f0fb84bff0e4d502d49fbd09ff3))
+* layout deploy error ([d570131](https://github.com/nick-jy-huang/quotation-app/commit/d570131b0af11ffbac5688cdd821229705ef87fd))
+
 ## [0.5.0](https://github.com/nick-jy-huang/quotation-app/compare/v0.4.1...v0.5.0) (2025-07-10)
 
 
