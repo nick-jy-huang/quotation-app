@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.6.1](https://github.com/nick-jy-huang/quotation-app/compare/v0.6.0...v0.6.1) (2025-07-10)
+
+
+### Bug Fixes
+
+* **button:** unify blue color to blue-400 in dark mode and blue-700 in light mode for accessibility compliance ([a0ef41d](https://github.com/nick-jy-huang/quotation-app/commit/a0ef41d034708e3802913e181b44243a08f61cff))
+* **form:** improve blue color contrast for form title in dark and light mode ([068fff3](https://github.com/nick-jy-huang/quotation-app/commit/068fff3fba6f842a843d0ffec59732702ead9952))
+* **preview-header:** improve blue color contrast for preview title in dark and light mode ([ed7ad43](https://github.com/nick-jy-huang/quotation-app/commit/ed7ad432acad3bd5fa656599043f4d9ffbd985e9))
+* test files ([b2dd077](https://github.com/nick-jy-huang/quotation-app/commit/b2dd0771f4e5f56cd4fbf537325e92ba357fb930))
+* **total-section:** improve blue color contrast for total amount in dark and light mode ([5bbd048](https://github.com/nick-jy-huang/quotation-app/commit/5bbd048497d6352c9670b574dd7e55c445f628f8))
+
 ## [0.6.0](https://github.com/nick-jy-huang/quotation-app/compare/v0.5.0...v0.6.0) (2025-07-10)
 
 
