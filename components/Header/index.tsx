@@ -12,7 +12,7 @@ export default function Header({ onChange, activeTab }: HeaderProps) {
         <div className="flex items-center justify-between py-4">
           <div className="flex gap-4">
             <img src="/favicon.png" alt="logo" className="h-8 w-8 duration-300 hover:scale-125" />
-            <h1 className="hidden text-2xl font-bold text-gray-900 lg:block">Quotation App</h1>
+            <h1 className="hidden text-2xl font-bold text-gray-900 md:block">Quotation App</h1>
           </div>
 
           <div id="desktop-tab-switcher" className="flex items-center gap-2">
