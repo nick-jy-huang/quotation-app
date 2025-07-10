@@ -9,7 +9,7 @@ interface TotalSectionProps {
   items: QuotationItem[];
 }
 
-export default function TotalSection({ items }: TotalSectionProps) {
+export default function TotalSection({ items, forceLight = false }: TotalSectionProps & { forceLight?: boolean }) {
   const t = useTranslations();
   const { subtotal, total } = useMemo(() => {
     const updatedItems = items.map((item) => ({
@@ -23,12 +23,15 @@ export default function TotalSection({ items }: TotalSectionProps) {
   }, [items]);
 
   return (
-    <div className="h-24 rounded-lg bg-gray-50 p-4">
+    <div className={forceLight
+      ? "h-24 rounded-lg bg-gray-50 p-4"
+      : "h-24 rounded-lg bg-gray-50 p-4 dark:bg-gray-800 dark:text-gray-100"
+    }>
       <div className="flex items-center justify-end text-lg font-semibold">
         <span>{t('totalsection_subtotal')}：</span>
         <span data-testid="subtotal-amount">{toThousand(subtotal)}</span>
       </div>
-      <div className="mt-2 flex items-center justify-end border-t pt-2 text-xl font-bold text-blue-600">
+      <div className="mt-2 flex items-center justify-end border-t pt-2 text-xl font-bold text-blue-700 dark:text-blue-400">
         <span>{t('totalsection_total')}：</span>
         <span data-testid="total-amount">{toThousand(total)}</span>
       </div>
