@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { SplashScreenProps } from './types';
 
-export default function SplashScreen() {
+export default function SplashScreen({ delay = 1000, duration = 700 }: SplashScreenProps) {
   const [hide, setHide] = useState(false);
   const [show, setShow] = useState(true);
 
@@ -10,14 +11,13 @@ export default function SplashScreen() {
     'fixed inset-0 z-20 flex items-center justify-center bg-white pb-12 transition-transform duration-700 will-change-transform';
 
   useEffect(() => {
-    const delay = 1000;
     const timer = setTimeout(() => setHide(true), delay);
-    const removeTimer = setTimeout(() => setShow(false), delay + 700);
+    const removeTimer = setTimeout(() => setShow(false), delay + duration);
     return () => {
       clearTimeout(timer);
       clearTimeout(removeTimer);
     };
-  }, []);
+  }, [delay, duration]);
 
   if (!show) return null;
 
