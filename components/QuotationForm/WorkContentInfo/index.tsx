@@ -11,7 +11,7 @@ export default function WorkContentInfo({
   const t = useTranslations();
   return (
     <div>
-      <h3 className="mb-2 text-lg font-semibold text-gray-700">{t('workcontentinfo_title')}</h3>
+      <h3 className="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-200">{t('workcontentinfo_title')}</h3>
       <Textarea
         label={t('workcontentinfo_label_main')}
         value={mainWorkContent}

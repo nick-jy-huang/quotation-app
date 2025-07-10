@@ -7,7 +7,7 @@ export default function Header({ freelancer, companyEmail, id, date, validUntil 
   return (
     <div className="mb-2 flex flex-wrap items-center justify-between">
       <div className="pb-2">
-        <h1 className="mb-2 text-3xl font-bold text-blue-600">{t('quotationpreview_title')}</h1>
+        <h1 className="mb-2 text-3xl font-bold text-blue-400">{t('quotationpreview_title')}</h1>
         <div className="xs:border-b space-y-1 text-gray-600">
           <p>
             {t('common_freelancer')}: {freelancer || t('common_not_filled')}

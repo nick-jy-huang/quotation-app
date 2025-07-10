@@ -84,10 +84,10 @@ describe('Home page', () => {
     renderWithIntl(<Home />);
     const previewBtn = screen.getByRole('button', { name: '預覽報價單' });
     await userEvent.click(previewBtn);
-    expect(previewBtn).toHaveClass('bg-blue-700');
+    expect(previewBtn).toHaveClass('bg-blue-600');
     const editBtn = screen.getByRole('button', { name: '編輯報價單' });
     await userEvent.click(editBtn);
-    expect(editBtn).toHaveClass('bg-blue-700');
+    expect(editBtn).toHaveClass('bg-blue-600');
   });
 
   it('shows and closes history modal', async () => {

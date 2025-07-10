@@ -33,7 +33,7 @@ export default function SortableItem({
       {...attributes}
       role={undefined}
       tabIndex={undefined}
-      className="border-t border-gray-200 px-4 py-2"
+      className="border-t border-gray-200 px-4 py-2 dark:border-gray-700"
     >
       <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-5">
         <div className="md:col-span-2">
@@ -66,7 +66,7 @@ export default function SortableItem({
           placeholder={t('sortableitem_hours_placeholder')}
           onChange={(value) => updateItem(item.id, 'hours', value)}
         />
-        <div className="text-mx flex items-center justify-end pt-6 text-right font-medium text-gray-700">
+        <div className="text-mx flex items-center justify-end pt-6 text-right font-medium text-gray-700 dark:text-gray-200">
           <div className="pr-4 text-xs">{toThousand(item.total)}</div>
           {itemsLength > 1 && (
             <Button

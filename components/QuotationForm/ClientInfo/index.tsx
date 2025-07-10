@@ -6,7 +6,7 @@ export default function ClientInfo({ quotation, updateQuotation }: ClientInfoPro
   const t = useTranslations();
   return (
     <div>
-      <h3 className="mb-2 text-lg font-semibold text-gray-700">{t('clientinfo_title')}</h3>
+      <h3 className="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-200">{t('clientinfo_title')}</h3>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Input
           label={t('input_label_name')}

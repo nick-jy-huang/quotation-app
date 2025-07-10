@@ -3,14 +3,12 @@ import { useTranslations } from 'next-intl';
 export default function DragHandle({ listeners }: { listeners: any }) {
   const t = useTranslations();
   return (
-    <span
+    <button
       {...listeners}
-      tabIndex={0}
-      className="ml-2 cursor-grab text-xs text-gray-400 select-none hover:text-gray-800"
+      className="cursor-move px-2 py-1 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
       aria-label={t('draghandle_sort')}
-      role="button"
     >
-      <i className="fa-solid fa-bars"></i>
-    </span>
+      <i className="fa-solid fa-grip-lines"></i>
+    </button>
   );
 }

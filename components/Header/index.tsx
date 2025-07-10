@@ -7,12 +7,12 @@ import { HeaderProps, EDIT_TYPES } from '@/types/components';
 export default function Header({ onChange, activeTab }: HeaderProps) {
   const t = useTranslations();
   return (
-    <header className="z-10 flex-shrink-0 bg-white shadow-sm">
+    <header className="z-10 flex-shrink-0 bg-white shadow-sm shadow-gray-300 dark:bg-gray-900 dark:shadow-black/70 dark:text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           <div className="flex gap-4">
             <img src="/favicon.png" alt="logo" className="h-8 w-8 duration-300 hover:scale-125" />
-            <h1 className="hidden text-2xl font-bold text-gray-900 md:block">Quotation App</h1>
+            <h1 className="hidden text-2xl font-bold text-gray-900 dark:text-gray-100 md:block">Quotation App</h1>
           </div>
 
           <div id="desktop-tab-switcher" className="flex items-center gap-2">

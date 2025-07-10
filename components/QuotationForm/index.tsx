@@ -37,22 +37,22 @@ export default function QuotationForm() {
   }
 
   return (
-    <div className="mx-auto max-w-4xl rounded-lg bg-white p-6 shadow-lg">
-      <h2 className="text-3xl font-bold text-blue-600">{t('quotationform_edittitle')}</h2>
+    <div className="mx-auto max-w-4xl rounded-lg bg-white p-6 shadow-lg shadow-gray-300 dark:bg-gray-900 dark:text-gray-100 dark:shadow-black/70">
+      <h2 className="text-3xl font-bold text-blue-700 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">{t('quotationform_edittitle')}</h2>
       <div className="space-y-4 pt-4">
         <BaseInfo quotation={quotation} updateQuotation={updateQuotation} />
-        <hr className="border-gray-200" />
+        <hr className="border-gray-200 dark:border-gray-700" />
         <CompanyInfo quotation={quotation} updateQuotation={updateQuotation} />
-        <hr className="border-gray-200" />
+        <hr className="border-gray-200 dark:border-gray-700" />
         <ClientInfo quotation={quotation} updateQuotation={updateQuotation} />
-        <hr className="border-gray-200" />
+        <hr className="border-gray-200 dark:border-gray-700" />
         <WorkContentInfo
           mainWorkContent={quotation.mainWorkContent}
           techStack={quotation.techStack}
           onMainWorkContentChange={(value) => updateQuotation('mainWorkContent', value)}
           onTechStackChange={(value) => updateQuotation('techStack', value)}
         />
-        <hr className="border-gray-200" />
+        <hr className="border-gray-200 dark:border-gray-700" />
         <ItemList
           items={quotation.items}
           addItem={addItem}
@@ -60,14 +60,14 @@ export default function QuotationForm() {
           removeItem={removeItem}
           reorderItems={reorderItems}
         />
-        <hr className="border-gray-200" />
+        <hr className="border-gray-200 dark:border-gray-700" />
         <Textarea
           label={t('quotationform_notes')}
           value={quotation.notes}
           onChange={(value) => updateQuotation('notes', value)}
           placeholder={t('quotationform_notesplaceholder')}
         />
-        <hr className="border-gray-200" />
+        <hr className="border-gray-200 dark:border-gray-700" />
         <TotalSection items={quotation.items} />
       </div>
     </div>

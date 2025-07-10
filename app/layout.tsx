@@ -24,7 +24,7 @@ export default async function LocaleLayout({ children }: { children: React.React
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-grid flex min-h-screen flex-col bg-gray-100`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-grid flex min-h-screen flex-col bg-gray-100 dark:bg-black`}
       >
         <main>{children}</main>
       </body>

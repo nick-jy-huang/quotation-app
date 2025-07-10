@@ -6,7 +6,7 @@ export default function BaseInfo({ quotation, updateQuotation }: BaseInfoProps) 
   const t = useTranslations();
   return (
     <div className="grid">
-      <h3 className="mb-2 text-lg font-semibold text-gray-700">{t('baseinfo_title')}</h3>
+      <h3 className="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-200">{t('baseinfo_title')}</h3>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         <Input
           label={t('input_label_id')}
