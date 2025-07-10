@@ -1,6 +1,8 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
+import '@/styles/globals.css';
+import SplashScreen from '@/components/SplashScreen';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -16,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       url: 'https://quotation-app-zeta.vercel.app/',
       images: [
         {
-          url: 'https://quotation-app-zeta.vercel.app/image.png',
+          url: 'https://quotation-app-zeta.vercel.app/image.jpg',
           width: 1200,
           height: 630,
         },
@@ -38,13 +40,14 @@ export default async function LocaleLayout({
   const { locale } = await params;
   let messages;
   try {
-    messages = (await import(`../../messages/${locale}.json`)).default;
+    messages = (await import(`@/messages/${locale}.json`)).default;
   } catch (error) {
     notFound();
   }
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
+      <SplashScreen />
       {children}
     </NextIntlClientProvider>
   );

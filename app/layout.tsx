@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import '@/styles/globals.css';
-import SplashScreen from '@/components/SplashScreen';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -12,11 +11,7 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function LocaleLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
@@ -31,7 +26,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-grid flex min-h-screen flex-col bg-gray-100`}
       >
-        <SplashScreen />
         <main>{children}</main>
       </body>
     </html>
