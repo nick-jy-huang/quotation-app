@@ -8,8 +8,8 @@
 </p>
 
 <p align="center">
-  <img src="https://quotation-app-zeta.vercel.app/bg_light.png" width="49%" alt="Quotation App Light Preview" style="border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.15);" />
-    <img src="https://quotation-app-zeta.vercel.app/bg_dark.png" width="49%" alt="Quotation App Dark Preview" style="border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.15);" />
+  <img src="https://github.com/nick-jy-huang/quotation-app/blob/main/public/bg_light.png" width="49%" alt="Quotation App Light Preview" style="border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.15);" />
+  <img src="https://github.com/nick-jy-huang/quotation-app/blob/main/public/bg_dark.png" width="49%" alt="Quotation App Dark Preview" style="border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.15);" />
 </p>
 
 ## ✨ 特色功能
