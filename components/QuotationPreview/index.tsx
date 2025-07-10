@@ -155,7 +155,7 @@ export default function QuotationPreview() {
               <QuotationNotes />
             </div>
             <div className="w-full space-y-2">
-              <TotalSection items={items} />
+              <TotalSection items={items} forceLight />
             </div>
           </div>
         </div>

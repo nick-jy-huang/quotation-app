@@ -8,7 +8,7 @@ export default function SplashScreen({ delay = 1000, duration = 700 }: SplashScr
   const [show, setShow] = useState(true);
 
   const styleClass =
-    'fixed inset-0 z-20 flex items-center justify-center bg-white pb-12 transition-transform duration-700 will-change-transform';
+    'fixed inset-0 z-20 flex items-center justify-center bg-white pb-12 transition-transform duration-700 will-change-transform dark:bg-gray-900';
 
   useEffect(() => {
     const timer = setTimeout(() => setHide(true), delay);
@@ -29,10 +29,10 @@ export default function SplashScreen({ delay = 1000, duration = 700 }: SplashScr
     >
       <div>
         <img src="/favicon.png" alt="logo" className="mx-auto mb-8 h-20 w-20 animate-bounce" />
-        <h2 className="mb-1 border-b border-gray-300 text-center text-lg font-bold text-gray-800">
+        <h2 className="mb-1 border-b border-gray-300 dark:border-gray-700 text-center text-lg font-bold text-gray-800 dark:text-gray-100">
           - Quotation App -
         </h2>
-        <h3 className="text-center text-lg font-bold text-gray-800">Loading...</h3>
+        <h3 className="text-center text-lg font-bold text-gray-800 dark:text-gray-100">Loading...</h3>
       </div>
     </div>
   );

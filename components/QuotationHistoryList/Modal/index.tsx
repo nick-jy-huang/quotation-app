@@ -61,7 +61,7 @@ export default function QuotationHistoryModal({
   return (
     <div
       ref={modalRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 xl:hidden"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 xl:hidden dark:bg-black/70"
       onClick={handleBackdropClick}
       aria-modal="true"
       role="dialog"
@@ -70,7 +70,7 @@ export default function QuotationHistoryModal({
       tabIndex={-1}
     >
       <div
-        className="relative w-80 max-w-full rounded-lg bg-white p-4 shadow-lg"
+        className="relative w-80 max-w-full rounded-lg bg-white p-4 shadow-lg shadow-gray-300 dark:bg-gray-900 dark:text-gray-100 dark:shadow-black/70"
         ref={contentRef}
         tabIndex={-1}
         id="quotation-history-modal-desc"
