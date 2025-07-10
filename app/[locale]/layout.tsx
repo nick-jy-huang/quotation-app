@@ -1,5 +1,32 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'og' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    openGraph: {
+      type: 'website',
+      title: t('title'),
+      description: t('description'),
+      url: 'https://quotation-app-zeta.vercel.app/',
+      images: [
+        {
+          url: 'https://quotation-app-zeta.vercel.app/image.png',
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+    icons: {
+      icon: 'https://quotation-app-zeta.vercel.app/favicon.png',
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,

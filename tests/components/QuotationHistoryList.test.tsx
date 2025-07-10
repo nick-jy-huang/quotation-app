@@ -1,4 +1,4 @@
-import { renderWithIntl } from './test-utils';
+import { renderWithIntl } from '@/tests/test-utils';
 import { screen, fireEvent } from '@testing-library/react';
 import QuotationHistoryList from '@/components/QuotationHistoryList';
 

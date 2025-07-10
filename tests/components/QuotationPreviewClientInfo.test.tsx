@@ -1,4 +1,4 @@
-import { renderWithIntl } from './test-utils';
+import { renderWithIntl } from '@/tests/test-utils';
 import { screen } from '@testing-library/react';
 import ClientInfo from '@/components/QuotationPreview/ClientInfo';
 describe('QuotationPreview/ClientInfo', () => {

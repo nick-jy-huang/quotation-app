@@ -75,5 +75,9 @@
   "page_switch_language": "切換語言",
   "page_clear_history_success": "已清除匯出歷史",
   "page_load_quotation_success": "已載入報價單",
-  "quotationhistorylist_clearhistory_confirm": "確定要清空所有匯出紀錄嗎？"
+  "quotationhistorylist_clearhistory_confirm": "確定要清空所有匯出紀錄嗎？",
+  "og": {
+    "title": "Quotation App",
+    "description": "Quotation App 是一款簡易好用的線上報價單編輯與預覽工具，支援多欄位填寫、PDF 匯出，讓你輕鬆管理各類型專案報價需求。"
+  }
 }

@@ -75,5 +75,9 @@
   "page_switch_language": "Switch language",
   "page_clear_history_success": "Export history cleared",
   "page_load_quotation_success": "Quotation loaded",
-  "quotationhistorylist_clearhistory_confirm": "Are you sure you want to clear all export history?"
+  "quotationhistorylist_clearhistory_confirm": "Are you sure you want to clear all export history?",
+  "og": {
+    "title": "Quotation App",
+    "description": "Quotation App is a simple and easy-to-use online quotation editor and preview tool, supporting multi-field input and PDF export, making it easy to manage all kinds of project quotations."
+  }
 }
