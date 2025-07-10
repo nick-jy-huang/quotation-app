@@ -25,6 +25,7 @@
 - 🎨 Prettier 程式碼格式化與 TypeScript 嚴謹型別
 - 🧩 元件結構清楚，易於維護與擴充
 - 🌏 多語系支援
+- 🌙 支援 Dark mode 主題切換，夜間閱讀更舒適
 
 ## 🛠️ 技術架構
 
@@ -46,6 +47,13 @@
 - ✅ 所有主要元件皆有多語系測試，確保不同語言下顯示正確
 - ➕ 新增語言只需於 `constants/locale.ts` 設定，無需手動調整 middleware
 - 🗂️ message 新增語系表
+
+## 🌙 Dark mode
+
+- 自動偵測系統偏好（`@media (prefers-color-scheme: dark)`）。
+- 報價單預覽區（QuotationPreview）強制亮色顯示，列印與分享時不受 dark mode 影響。
+- 所有主色藍在深色主題下自動調整，確保對比度與無障礙。
+- 格線、陰影、隔線等細節皆針對 dark mode 優化，夜間閱讀更舒適。
 
 ## 🚀 安裝與啟動
 
