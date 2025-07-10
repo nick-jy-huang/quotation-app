@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.0](https://github.com/nick-jy-huang/quotation-app/compare/v0.4.1...v0.5.0) (2025-07-10)
+
+
+### Features
+
+* seo tag i18n ([e6b70a0](https://github.com/nick-jy-huang/quotation-app/commit/e6b70a0b7babe0bc7a2adcf80935b1b1596bf19c))
+
+
+### Bug Fixes
+
+* sort test files ([fea86ce](https://github.com/nick-jy-huang/quotation-app/commit/fea86ce6d1c495044c5fc1792d914571c2a3e94f))
+* splash screen component test ([82b4a98](https://github.com/nick-jy-huang/quotation-app/commit/82b4a9870437457f9cc00d1bd82f5263504b9483))
+
 ## [0.4.1](https://github.com/nick-jy-huang/quotation-app/compare/v0.4.0...v0.4.1) (2025-07-09)
 
 
