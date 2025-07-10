@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 export default function Footer() {
   const t = useTranslations();
   return (
-    <footer className="sticky bottom-0 z-10 w-full space-x-2 bg-white py-4 text-center text-xs text-gray-700">
+    <footer className="sticky bottom-0 z-10 w-full space-x-2 bg-white p-4 text-center text-xs text-gray-700">
       <span>
         &copy; {dayjs().year()} {t('page_footer_copyright')}
       </span>

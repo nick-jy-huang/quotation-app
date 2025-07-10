@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '@/styles/globals.css';
 import SplashScreen from '@/components/SplashScreen';
@@ -12,29 +11,6 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 });
-
-export const metadata: Metadata = {
-  title: 'Quotation App',
-  description:
-    'Quotation App 是一款簡易好用的線上報價單編輯與預覽工具，支援多欄位填寫、PDF 匯出，讓你輕鬆管理各類型專案報價需求。',
-  openGraph: {
-    type: 'website',
-    title: 'Quotation App',
-    description:
-      'Quotation App 是一款簡易好用的線上報價單編輯與預覽工具，支援多欄位填寫、PDF 匯出，讓你輕鬆管理各類型專案報價需求。',
-    url: 'https://quotation-app-zeta.vercel.app/',
-    images: [
-      {
-        url: 'https://quotation-app-zeta.vercel.app/image.png',
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-  icons: {
-    icon: 'https://quotation-app-zeta.vercel.app/favicon.png',
-  },
-};
 
 export default function RootLayout({
   children,
