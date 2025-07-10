@@ -19,6 +19,7 @@ export default defineConfig({
         '.next/**',
         'axe.ts',
         'i18n/**',
+        'axe.ts',
       ],
     },
   },

@@ -1,4 +1,4 @@
-import { renderWithIntl } from './test-utils';
+import { renderWithIntl } from '@/tests/test-utils';
 import { screen } from '@testing-library/react';
 import Header from '@/components/QuotationPreview/Header';
 describe('Header', () => {

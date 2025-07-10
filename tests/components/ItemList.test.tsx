@@ -1,4 +1,4 @@
-import { renderWithIntl } from './test-utils';
+import { renderWithIntl } from '@/tests/test-utils';
 import { screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ItemList from '@/components/QuotationForm/ItemList';
